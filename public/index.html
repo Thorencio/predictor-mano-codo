@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Predictor bayesiano de lesiones · Mano-muñeca y codo-antebrazo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <p class="tag">Prototipo · Mano-muñeca + Codo-antebrazo · v2</p>
+    <h1>Predictor bayesiano de lesiones de mano, muñeca, codo y antebrazo</h1>
+    <p class="lead">Cada respuesta actualiza la probabilidad de cada diagnóstico de <b>ambos segmentos</b> con razones de verosimilitud (LR) provenientes de revisiones sistemáticas, guías y estudios diagnósticos.</p>
+    <div class="controls">
+      <label class="switch"><input type="checkbox" id="adjQuality" checked><span></span>Ajuste por calidad de evidencia</label>
+      <label class="switch"><input type="checkbox" id="reviewMode"><span></span>Modo revisión</label>
+      <div class="load">
+        <select id="caseSelect" aria-label="Caso de ejemplo"><option value="">Caso de ejemplo…</option></select>
+        <button id="loadCase" class="btn">Cargar</button>
+        <button id="reset" class="btn ghost">Limpiar</button>
+      </div>
+    </div>
+    <p class="warn">Prototipo en validación. No entrega diagnósticos ni reemplaza el juicio clínico. No ingrese datos identificatorios.</p>
+  </div>
+  <nav class="tabs wrap">
+    <a href="#evaluar">Evaluar</a><a href="#casos">Validación de casos</a><a href="#evidencia">Evidencia y revisión</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section id="evaluar" class="grid">
+    <div class="col-q">
+      <div class="seg-filter" role="tablist">
+        <button data-seg="todos" class="on">Ambos segmentos</button>
+        <button data-seg="mano">Mano-muñeca</button>
+        <button data-seg="codo">Codo-antebrazo</button>
+      </div>
+      <div id="questions"></div>
+    </div>
+    <aside class="col-r">
+      <h2>Probabilidad por diagnóstico</h2>
+      <p class="legend"><i class="hi"></i>alta (≥ 70 %) <i class="mid"></i>posible (30–69 %) <i class="lo"></i>baja (&lt; 30 %) <i class="pre"></i>pre-test</p>
+      <div id="results"></div>
+      <h2>Qué evaluar ahora</h2>
+      <p class="muted">Ordena preguntas y pruebas por cuánto reducirían la incertidumbre en ambos segmentos, según quién puede realizarlas.</p>
+      <div class="who" id="whoFilter"></div>
+      <ol id="next"></ol>
+    </aside>
+  </section>
+
+  <section id="casos">
+    <h2>Validación de casos</h2>
+    <p class="muted">Viñetas de prueba. Un caso “pasa” si cada diagnóstico esperado queda primero en su segmento y en ≥ 30 %.</p>
+    <button id="runCases" class="btn">Ejecutar validación</button>
+    <div id="caseResults"></div>
+  </section>
+
+  <section id="evidencia">
+    <h2>Proponer un hallazgo faltante</h2>
+    <form id="propose" class="propose">
+      <input name="texto" placeholder="Hallazgo (ej.: test de Speed en codo)" required>
+      <select name="dx" id="proposeDx"></select>
+      <input name="pos" type="number" step="0.01" min="1" placeholder="LR+">
+      <input name="neg" type="number" step="0.01" min="0" max="1" placeholder="LR−">
+      <input name="ref" placeholder="Referencia (DOI / cita)">
+      <button class="btn">Generar propuesta</button>
+    </form>
+    <pre id="proposeOut" class="code" hidden></pre>
+
+    <h2>Base de evidencia</h2>
+    <p class="muted">Para modificar valores, edite <code>public/data/knowledge.json</code> y haga push: Vercel redespliega automáticamente.</p>
+    <div id="evidence"></div>
+
+    <h2>Referencias</h2>
+    <ol id="refs" class="refs"></ol>
+  </section>
+
+  <footer class="foot">
+    Cada diagnóstico se calcula de forma independiente, por lo que los porcentajes no suman 100 %. Las probabilidades pre-test corresponden a personas que consultan por síntomas de mano, muñeca, codo o antebrazo y son estimaciones.
+  </footer>
+</main>
+
+<div id="mini" class="mini"></div>
+<script src="app.js"></script>
+</body>
+</html>
