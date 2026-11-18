@@ -1,1735 +1,2664 @@
 {
- "version": "2.0.0",
- "actualizado": "2026-11-16",
- "nota": "Prototipo. Pre-test = estimaciones para personas que consultan por síntomas del miembro superior distal. Valores de LR deben ser revisados por el equipo antes de uso clínico.",
- "segmentos": {
-  "mano": "Mano y muñeca",
-  "codo": "Codo y antebrazo",
-  "general": "General"
+ "version": "0.2.0",
+ "updated": "2026-11-17",
+ "region": "Mano-muñeca y codo-antebrazo",
+ "notes": "Probabilidades pre-test para personas que consultan en atención primaria o kinesiología por síntomas del segmento correspondiente (mano-muñeca o codo-antebrazo). Valores nivel C = estimación clínica pendiente de validación.",
+ "evidenceWeights": {
+  "A": 1,
+  "B": 0.75,
+  "C": 0.5
  },
- "categorias": {
-  "anamnesis": "Anamnesis",
-  "fisico": "Evaluación física",
-  "sangre": "Exámenes de sangre",
-  "imagen": "Imágenes y estudios"
+ "whoLabels": {
+  "self": "Tú mismo",
+  "pro": "Profesional",
+  "lab": "Laboratorio",
+  "img": "Imagen"
  },
- "evaluadores": {
-  "paciente": "Paciente",
-  "kinesiologo": "Kinesiólogo/a",
-  "medico": "Médico/a",
-  "laboratorio": "Laboratorio",
-  "imagen": "Imagenología/EDX"
+ "accessCost": {
+  "self": 1,
+  "pro": 1.25,
+  "lab": 1.8,
+  "img": 2.4
  },
- "calidad": {
-  "A": {
-   "texto": "Revisión sistemática / estudio diagnóstico de buena calidad",
-   "factor": 1.0
-  },
-  "B": {
-   "texto": "Estudio diagnóstico único o con riesgo de sesgo",
-   "factor": 0.8
-  },
-  "C": {
-   "texto": "Estimación de experto o evidencia indirecta",
-   "factor": 0.6
-  }
- },
- "hallazgos": [
-  {
-   "id": "edad_mayor_50",
-   "segmento": "general",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Edad ≥ 50 años"
-  },
-  {
-   "id": "sexo_fem",
-   "segmento": "general",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Sexo femenino"
-  },
-  {
-   "id": "trauma_foosh",
-   "segmento": "general",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Caída sobre la mano extendida o trauma agudo de muñeca/antebrazo"
-  },
-  {
-   "id": "repetitivo",
-   "segmento": "general",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Actividad manual repetitiva o de prensión intensa (laboral o deportiva)"
-  },
-  {
-   "id": "embarazo",
-   "segmento": "general",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Embarazo o posparto (≤ 1 año)"
-  },
-  {
-   "id": "rigidez_matinal",
-   "segmento": "general",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Rigidez matinal > 30 min en las manos"
-  },
-  {
-   "id": "parestesias_mediano",
-   "segmento": "mano",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Hormigueo en pulgar, índice y medio (diagrama de Katz clásico/probable)"
-  },
-  {
-   "id": "sintomas_nocturnos",
-   "segmento": "mano",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Hormigueo que despierta de noche y alivia al sacudir la mano"
-  },
-  {
-   "id": "dolor_radial_muneca",
-   "segmento": "mano",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Dolor en el borde radial de la muñeca (lado del pulgar)"
-  },
-  {
-   "id": "dolor_cubital_muneca",
-   "segmento": "mano",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Dolor en el borde cubital de la muñeca (lado del meñique)"
-  },
-  {
-   "id": "dolor_base_pulgar",
-   "segmento": "mano",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Dolor en la base del pulgar al pinzar, girar llaves o abrir frascos"
-  },
-  {
-   "id": "bloqueo_dedo",
-   "segmento": "mano",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Dedo que se traba o resalta al flexionar/extender"
-  },
-  {
-   "id": "masa_muneca",
-   "segmento": "mano",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Bulto palpable en el dorso o cara palmar de la muñeca"
-  },
-  {
-   "id": "dolor_lateral_codo",
-   "segmento": "codo",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Dolor en la cara lateral del codo al agarrar o levantar objetos"
-  },
-  {
-   "id": "dolor_medial_codo",
-   "segmento": "codo",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Dolor en la cara medial del codo"
-  },
-  {
-   "id": "parestesias_cubital",
-   "segmento": "codo",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Hormigueo en 4.º-5.º dedo, peor con el codo flexionado"
-  },
-  {
-   "id": "pop_biceps",
-   "segmento": "codo",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Chasquido súbito en la flexura del codo al levantar una carga"
-  },
-  {
-   "id": "tumefaccion_posterior_codo",
-   "segmento": "codo",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Hinchazón blanda en la punta del codo"
-  },
-  {
-   "id": "lanzador",
-   "segmento": "codo",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Deporte de lanzamiento o carga repetida en valgo"
-  },
-  {
-   "id": "trauma_codo",
-   "segmento": "codo",
-   "categoria": "anamnesis",
-   "evaluador": "paciente",
-   "texto": "Caída o golpe sobre el codo o con el brazo extendido"
-  },
-  {
-   "id": "hba1c_alta",
-   "segmento": "general",
-   "categoria": "sangre",
-   "evaluador": "laboratorio",
-   "texto": "HbA1c ≥ 6,5 % o diabetes conocida"
-  },
-  {
-   "id": "tsh_alta",
-   "segmento": "general",
-   "categoria": "sangre",
-   "evaluador": "laboratorio",
-   "texto": "TSH elevada o hipotiroidismo conocido"
-  },
-  {
-   "id": "fr_pos",
-   "segmento": "general",
-   "categoria": "sangre",
-   "evaluador": "laboratorio",
-   "texto": "Factor reumatoide positivo"
-  },
-  {
-   "id": "accp_pos",
-   "segmento": "general",
-   "categoria": "sangre",
-   "evaluador": "laboratorio",
-   "texto": "Anti-CCP positivo"
-  },
-  {
-   "id": "pcr_alta",
-   "segmento": "general",
-   "categoria": "sangre",
-   "evaluador": "laboratorio",
-   "texto": "PCR o VHS elevada"
-  },
-  {
-   "id": "hipoalgesia_mediano",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Hipoalgesia en territorio del mediano (pulpejo del índice)"
-  },
-  {
-   "id": "debilidad_abd_pulgar",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Debilidad de abducción del pulgar"
-  },
-  {
-   "id": "phalen",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Test de Phalen positivo"
-  },
-  {
-   "id": "tinel_carpo",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Tinel en el túnel carpiano positivo"
-  },
-  {
-   "id": "dolor_1er_compartimento",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Dolor o tumefacción sobre el 1.er compartimento extensor (estiloides radial)"
-  },
-  {
-   "id": "what_test",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Test WHAT (hiperflexión de muñeca + abducción resistida del pulgar) doloroso"
-  },
-  {
-   "id": "finkelstein",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Test de Finkelstein/Eichhoff doloroso"
-  },
-  {
-   "id": "tabaquera",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Dolor a la palpación de la tabaquera anatómica"
-  },
-  {
-   "id": "tuberculo_escafoides",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Dolor a la palpación del tubérculo del escafoides"
-  },
-  {
-   "id": "compresion_axial_pulgar",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Dolor a la compresión axial del pulgar"
-  },
-  {
-   "id": "deformidad_muneca",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Deformidad visible de la muñeca (dorso de tenedor)"
-  },
-  {
-   "id": "tumefaccion_dorsal",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Tumefacción dorsal/radial distal tras el trauma"
-  },
-  {
-   "id": "fovea",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Signo de la fóvea cubital positivo"
-  },
-  {
-   "id": "press_test",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Press test doloroso (apoyar el peso en las muñecas al pararse)"
-  },
-  {
-   "id": "grind_tmc",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Grind test trapeciometacarpiano positivo"
-  },
-  {
-   "id": "nodulo_a1",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Nódulo palpable en la polea A1"
-  },
-  {
-   "id": "tumefaccion_mcf_simetrica",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Tumefacción simétrica de MCF/IFP (squeeze test positivo)"
-  },
-  {
-   "id": "transiluminacion",
-   "segmento": "mano",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "La masa transilumina"
-  },
-  {
-   "id": "palp_epi_lat",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Dolor a la palpación del epicóndilo lateral"
-  },
-  {
-   "id": "cozen",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Test de Cozen (extensión de muñeca resistida) doloroso"
-  },
-  {
-   "id": "maudsley",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Test de Maudsley (extensión resistida del 3.er dedo) doloroso"
-  },
-  {
-   "id": "palp_epi_med",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Dolor a la palpación del epicóndilo medial"
-  },
-  {
-   "id": "flex_pron_resist",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Dolor con flexión de muñeca o pronación resistida"
-  },
-  {
-   "id": "flex_codo_presion",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Flexión de codo + presión en surco cubital reproduce el hormigueo"
-  },
-  {
-   "id": "tinel_cubital",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Tinel en el surco cubital positivo"
-  },
-  {
-   "id": "debilidad_intrinsecos",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Debilidad de intrínsecos de la mano / signo de Froment"
-  },
-  {
-   "id": "fluctuacion_olecranon",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Tumefacción fluctuante sobre el olécranon"
-  },
-  {
-   "id": "hook_test",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Hook test positivo (no se engancha el tendón bicipital)"
-  },
-  {
-   "id": "debilidad_supinacion",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Debilidad de supinación"
-  },
-  {
-   "id": "deformidad_biceps",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Equimosis en flexura o retracción del vientre del bíceps"
-  },
-  {
-   "id": "extension_codo_incompleta",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "No logra extender completamente el codo (elbow extension test)"
-  },
-  {
-   "id": "palp_cabeza_radial",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Dolor a la palpación de la cabeza radial"
-  },
-  {
-   "id": "dolor_distal_epi",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Dolor 3-5 cm distal al epicóndilo lateral (arcada de Frohse)"
-  },
-  {
-   "id": "supinacion_resist_dolor",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Dolor con supinación resistida"
-  },
-  {
-   "id": "debilidad_ext_dedos",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "kinesiologo",
-   "texto": "Debilidad de extensión de dedos sin déficit sensitivo"
-  },
-  {
-   "id": "moving_valgus",
-   "segmento": "codo",
-   "categoria": "fisico",
-   "evaluador": "medico",
-   "texto": "Moving valgus stress test positivo"
-  },
-  {
-   "id": "eco_mediano",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: área del nervio mediano ≥ 10 mm²"
-  },
-  {
-   "id": "edx_stc",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Electrodiagnóstico compatible con túnel carpiano"
-  },
-  {
-   "id": "eco_dequervain",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: engrosamiento/tenosinovitis del 1.er compartimento"
-  },
-  {
-   "id": "rx_escafoides",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Rx: fractura de escafoides visible"
-  },
-  {
-   "id": "rm_escafoides",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "RM/TC: fractura de escafoides"
-  },
-  {
-   "id": "rx_radio",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Rx: fractura distal de radio"
-  },
-  {
-   "id": "rm_tfcc",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "RM/artro-RM: lesión del CFCT"
-  },
-  {
-   "id": "rx_tmc",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Rx: artrosis trapeciometacarpiana"
-  },
-  {
-   "id": "eco_a1",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: engrosamiento de la polea A1"
-  },
-  {
-   "id": "eco_sinovitis",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: sinovitis con señal Doppler"
-  },
-  {
-   "id": "eco_ganglion",
-   "segmento": "mano",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: lesión quística anecoica"
-  },
-  {
-   "id": "eco_epi_lat",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: tendinopatía del extensor común"
-  },
-  {
-   "id": "eco_epi_med",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: tendinopatía del flexor-pronador"
-  },
-  {
-   "id": "eco_cubital",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: área del nervio cubital en el codo ≥ 10 mm²"
-  },
-  {
-   "id": "edx_cubital",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Electrodiagnóstico compatible con neuropatía cubital en el codo"
-  },
+ "stages": [
   {
-   "id": "eco_bursa",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Eco: colección en la bursa olecraniana"
+   "id": "ctx",
+   "name": "Perfil",
+   "intro": "Datos de la persona y del contexto. Ajustan la probabilidad de partida de cada diagnóstico."
   },
   {
-   "id": "rm_biceps",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "RM/eco: rotura del bíceps distal"
+   "id": "anam",
+   "name": "Síntomas",
+   "intro": "Anamnesis: qué siente, dónde y cuándo. Todo lo puede responder la propia persona."
   },
   {
-   "id": "rx_almohadilla",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Rx: signo de la almohadilla grasa (derrame)"
+   "id": "ex",
+   "name": "Examen físico",
+   "intro": "Pruebas físicas. Las marcadas «Tú mismo» se pueden hacer en casa; las demás requieren un kinesiólogo, terapeuta de mano o médico."
   },
   {
-   "id": "rx_cabeza_radial",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Rx: fractura de cabeza radial"
+   "id": "lab",
+   "name": "Laboratorio",
+   "intro": "Exámenes de sangre. Responde solo si ya tienes el resultado."
   },
   {
-   "id": "rm_lcu",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "RM/artro-RM: lesión del ligamento colateral cubital"
+   "id": "img",
+   "name": "Imágenes y estudios",
+   "intro": "Radiografía, ecografía, RM, TC y electrodiagnóstico. Responde según el informe."
   },
   {
-   "id": "edx_nip",
-   "segmento": "codo",
-   "categoria": "imagen",
-   "evaluador": "imagen",
-   "texto": "Electrodiagnóstico: compromiso del nervio interóseo posterior"
+   "id": "red",
+   "name": "Señales de alarma",
+   "intro": "Si alguna es positiva, la app deja de ser el camino: hay que consultar de urgencia."
   }
  ],
- "diagnosticos": [
+ "diagnoses": [
   {
-   "id": "stc",
-   "segmento": "mano",
-   "nombre": "Síndrome del túnel carpiano",
-   "pretest": 0.25,
-   "lr": {
-    "parestesias_mediano": {
-     "pos": 2.4,
-     "neg": 0.5,
-     "calidad": "A",
-     "refs": [
-      "dArcy2000"
-     ]
-    },
-    "sintomas_nocturnos": {
-     "pos": 1.5,
-     "neg": 0.6,
-     "calidad": "B",
-     "refs": [
-      "Wainner2005"
-     ]
-    },
-    "hipoalgesia_mediano": {
-     "pos": 3.1,
-     "neg": 0.7,
-     "calidad": "A",
-     "refs": [
-      "dArcy2000"
-     ]
-    },
-    "debilidad_abd_pulgar": {
-     "pos": 1.8,
-     "neg": 0.5,
-     "calidad": "A",
-     "refs": [
-      "dArcy2000"
-     ]
-    },
-    "phalen": {
-     "pos": 1.3,
-     "neg": 0.7,
-     "calidad": "A",
-     "refs": [
-      "dArcy2000"
-     ]
-    },
-    "tinel_carpo": {
-     "pos": 1.4,
-     "neg": 0.8,
-     "calidad": "A",
-     "refs": [
-      "dArcy2000"
-     ]
-    },
-    "edad_mayor_50": {
-     "pos": 1.3,
-     "neg": 0.8,
-     "calidad": "C",
-     "refs": [
-      "Wainner2005"
-     ]
-    },
-    "sexo_fem": {
-     "pos": 1.3,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "embarazo": {
-     "pos": 2.0,
-     "neg": 0.95,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "hba1c_alta": {
-     "pos": 1.6,
-     "neg": 0.9,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    },
-    "tsh_alta": {
-     "pos": 1.4,
-     "neg": 0.95,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    },
-    "repetitivo": {
-     "pos": 1.5,
-     "neg": 0.8,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    },
-    "eco_mediano": {
-     "pos": 3.8,
-     "neg": 0.29,
-     "calidad": "A",
-     "refs": [
-      "Fowler2011"
-     ]
-    },
-    "edx_stc": {
-     "pos": 8.0,
-     "neg": 0.2,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "cts",
+   "name": "Síndrome del túnel carpiano",
+   "prior": 0.2,
+   "next": "Estudio de conducción nerviosa o ecografía del nervio mediano.",
+   "seg": "mano"
   },
   {
-   "id": "dequervain",
-   "segmento": "mano",
-   "nombre": "Tenosinovitis de De Quervain",
-   "pretest": 0.1,
-   "lr": {
-    "dolor_radial_muneca": {
-     "pos": 3.0,
-     "neg": 0.2,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "dolor_1er_compartimento": {
-     "pos": 4.0,
-     "neg": 0.15,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "what_test": {
-     "pos": 1.4,
-     "neg": 0.03,
-     "calidad": "B",
-     "refs": [
-      "Goubau2014"
-     ]
-    },
-    "finkelstein": {
-     "pos": 1.1,
-     "neg": 0.8,
-     "calidad": "B",
-     "refs": [
-      "Goubau2014"
-     ]
-    },
-    "dolor_base_pulgar": {
-     "pos": 1.5,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "embarazo": {
-     "pos": 2.5,
-     "neg": 0.9,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "sexo_fem": {
-     "pos": 1.5,
-     "neg": 0.6,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "repetitivo": {
-     "pos": 1.6,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "eco_dequervain": {
-     "pos": 8.0,
-     "neg": 0.15,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "cmc",
+   "name": "Rizartrosis (base del pulgar)",
+   "prior": 0.1,
+   "next": "Radiografía de mano con proyección del pulgar.",
+   "seg": "mano"
   },
   {
-   "id": "fx_escafoides",
-   "segmento": "mano",
-   "nombre": "Fractura de escafoides",
-   "pretest": 0.05,
-   "lr": {
-    "trauma_foosh": {
-     "pos": 4.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "Carpenter2014"
-     ]
-    },
-    "dolor_radial_muneca": {
-     "pos": 1.8,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "tabaquera": {
-     "pos": 1.5,
-     "neg": 0.15,
-     "calidad": "B",
-     "refs": [
-      "Carpenter2014"
-     ]
-    },
-    "tuberculo_escafoides": {
-     "pos": 1.6,
-     "neg": 0.3,
-     "calidad": "B",
-     "refs": [
-      "Carpenter2014"
-     ]
-    },
-    "compresion_axial_pulgar": {
-     "pos": 1.6,
-     "neg": 0.5,
-     "calidad": "B",
-     "refs": [
-      "Carpenter2014"
-     ]
-    },
-    "rx_escafoides": {
-     "pos": 20.0,
-     "neg": 0.3,
-     "calidad": "B",
-     "refs": [
-      "Carpenter2014"
-     ]
-    },
-    "rm_escafoides": {
-     "pos": 50.0,
-     "neg": 0.03,
-     "calidad": "A",
-     "refs": [
-      "Mallee2015"
-     ]
-    }
-   }
+   "id": "dq",
+   "name": "Tenosinovitis de De Quervain",
+   "prior": 0.08,
+   "next": "Test WHAT por un profesional; ecografía del 1er compartimento si hay duda.",
+   "seg": "mano"
   },
   {
-   "id": "fx_radio",
-   "segmento": "mano",
-   "nombre": "Fractura distal de radio",
-   "pretest": 0.05,
-   "lr": {
-    "trauma_foosh": {
-     "pos": 4.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "deformidad_muneca": {
-     "pos": 10.0,
-     "neg": 0.6,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "tumefaccion_dorsal": {
-     "pos": 2.5,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "edad_mayor_50": {
-     "pos": 1.5,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "sexo_fem": {
-     "pos": 1.3,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "rx_radio": {
-     "pos": 40.0,
-     "neg": 0.05,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "tf",
+   "name": "Dedo en gatillo",
+   "prior": 0.08,
+   "next": "Diagnóstico clínico; ecografía de la polea A1 si hay duda.",
+   "seg": "mano"
+  },
+  {
+   "id": "gang",
+   "name": "Quiste ganglionar",
+   "prior": 0.08,
+   "next": "Ecografía de partes blandas.",
+   "seg": "mano"
+  },
+  {
+   "id": "hoa",
+   "name": "Artrosis de dedos (interfalángica)",
+   "prior": 0.07,
+   "next": "Radiografía de ambas manos.",
+   "seg": "mano"
+  },
+  {
+   "id": "rad",
+   "name": "Fractura de radio distal",
+   "prior": 0.05,
+   "next": "Radiografía de muñeca en un servicio de urgencia.",
+   "seg": "mano"
   },
   {
    "id": "tfcc",
-   "segmento": "mano",
-   "nombre": "Lesión del complejo fibrocartílago triangular (CFCT)",
-   "pretest": 0.07,
-   "lr": {
-    "dolor_cubital_muneca": {
-     "pos": 3.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "fovea": {
-     "pos": 4.0,
-     "neg": 0.2,
-     "calidad": "B",
-     "refs": [
-      "Tay2007"
-     ]
-    },
-    "press_test": {
-     "pos": 2.0,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "Valdes2013"
-     ]
-    },
-    "trauma_foosh": {
-     "pos": 1.5,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "rm_tfcc": {
-     "pos": 5.0,
-     "neg": 0.25,
-     "calidad": "A",
-     "refs": [
-      "Smith2012"
-     ]
-    }
-   }
+   "name": "Lesión del fibrocartílago triangular",
+   "prior": 0.05,
+   "next": "RM o artro-RM; la artroscopía es el estándar de referencia.",
+   "seg": "mano"
   },
   {
-   "id": "rizartrosis",
-   "segmento": "mano",
-   "nombre": "Artrosis trapeciometacarpiana (rizartrosis)",
-   "pretest": 0.12,
-   "lr": {
-    "dolor_base_pulgar": {
-     "pos": 3.0,
-     "neg": 0.2,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "edad_mayor_50": {
-     "pos": 2.5,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "sexo_fem": {
-     "pos": 1.5,
-     "neg": 0.6,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "dolor_radial_muneca": {
-     "pos": 1.5,
-     "neg": 0.5,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "grind_tmc": {
-     "pos": 9.0,
-     "neg": 0.72,
-     "calidad": "B",
-     "refs": [
-      "Choa2014"
-     ]
-    },
-    "rx_tmc": {
-     "pos": 6.0,
-     "neg": 0.2,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "esc",
+   "name": "Fractura de escafoides",
+   "prior": 0.04,
+   "next": "Radiografía con proyecciones de escafoides. Si es normal y la sospecha sigue, inmovilizar y pedir RM.",
+   "seg": "mano"
   },
   {
-   "id": "gatillo",
-   "segmento": "mano",
-   "nombre": "Dedo en gatillo",
-   "pretest": 0.1,
-   "lr": {
-    "bloqueo_dedo": {
-     "pos": 15.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "Makkouk2008"
-     ]
-    },
-    "nodulo_a1": {
-     "pos": 5.0,
-     "neg": 0.4,
-     "calidad": "C",
-     "refs": [
-      "Makkouk2008"
-     ]
-    },
-    "hba1c_alta": {
-     "pos": 2.0,
-     "neg": 0.9,
-     "calidad": "B",
-     "refs": [
-      "Makkouk2008"
-     ]
-    },
-    "eco_a1": {
-     "pos": 8.0,
-     "neg": 0.15,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "sl",
+   "name": "Lesión ligamento escafolunar",
+   "prior": 0.03,
+   "next": "Radiografías con stress y RM 3T o artro-RM.",
+   "seg": "mano"
   },
   {
    "id": "ar",
-   "segmento": "mano",
-   "nombre": "Artritis reumatoide / inflamatoria",
-   "pretest": 0.04,
-   "lr": {
-    "rigidez_matinal": {
-     "pos": 1.9,
-     "neg": 0.6,
-     "calidad": "B",
-     "refs": [
-      "Aletaha2010"
-     ]
-    },
-    "tumefaccion_mcf_simetrica": {
-     "pos": 3.0,
-     "neg": 0.4,
-     "calidad": "B",
-     "refs": [
-      "Aletaha2010"
-     ]
-    },
-    "fr_pos": {
-     "pos": 4.9,
-     "neg": 0.38,
-     "calidad": "A",
-     "refs": [
-      "Nishimura2007"
-     ]
-    },
-    "accp_pos": {
-     "pos": 12.5,
-     "neg": 0.36,
-     "calidad": "A",
-     "refs": [
-      "Nishimura2007"
-     ]
-    },
-    "pcr_alta": {
-     "pos": 2.0,
-     "neg": 0.5,
-     "calidad": "C",
-     "refs": [
-      "Aletaha2010"
-     ]
-    },
-    "eco_sinovitis": {
-     "pos": 4.0,
-     "neg": 0.3,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    },
-    "sexo_fem": {
-     "pos": 1.4,
-     "neg": 0.6,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "name": "Artritis reumatoide",
+   "prior": 0.03,
+   "next": "Anti-CCP, factor reumatoide, PCR/VHS y derivación a reumatología.",
+   "seg": "mano"
   },
   {
-   "id": "ganglion",
-   "segmento": "mano",
-   "nombre": "Ganglión de muñeca",
-   "pretest": 0.08,
-   "lr": {
-    "masa_muneca": {
-     "pos": 6.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "transiluminacion": {
-     "pos": 5.0,
-     "neg": 0.5,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "eco_ganglion": {
-     "pos": 20.0,
-     "neg": 0.05,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "epl",
+   "seg": "codo",
+   "name": "Epicondilalgia lateral (codo de tenista)",
+   "prior": 0.35,
+   "next": "Diagnóstico clínico; ecografía si hay dudas o mala evolución."
   },
   {
-   "id": "epi_lat",
-   "segmento": "codo",
-   "nombre": "Epicondilalgia lateral (codo de tenista)",
-   "pretest": 0.35,
-   "lr": {
-    "dolor_lateral_codo": {
-     "pos": 3.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "palp_epi_lat": {
-     "pos": 2.5,
-     "neg": 0.1,
-     "calidad": "B",
-     "refs": [
-      "Saroja2014"
-     ]
-    },
-    "cozen": {
-     "pos": 2.0,
-     "neg": 0.2,
-     "calidad": "B",
-     "refs": [
-      "Saroja2014"
-     ]
-    },
-    "maudsley": {
-     "pos": 2.0,
-     "neg": 0.4,
-     "calidad": "B",
-     "refs": [
-      "Saroja2014"
-     ]
-    },
-    "repetitivo": {
-     "pos": 1.5,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "eco_epi_lat": {
-     "pos": 3.5,
-     "neg": 0.25,
-     "calidad": "A",
-     "refs": [
-      "Dones2014"
-     ]
-    }
-   }
+   "id": "epm",
+   "seg": "codo",
+   "name": "Epicondilalgia medial (codo de golfista)",
+   "prior": 0.08,
+   "next": "Diagnóstico clínico; ecografía si hay dudas."
   },
   {
-   "id": "epi_med",
-   "segmento": "codo",
-   "nombre": "Epicondilalgia medial (codo de golfista)",
-   "pretest": 0.08,
-   "lr": {
-    "dolor_medial_codo": {
-     "pos": 4.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "palp_epi_med": {
-     "pos": 4.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "flex_pron_resist": {
-     "pos": 3.0,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "repetitivo": {
-     "pos": 1.5,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "eco_epi_med": {
-     "pos": 4.0,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "cub",
+   "seg": "codo",
+   "name": "Neuropatía cubital en el codo (túnel cubital)",
+   "prior": 0.1,
+   "next": "Estudio de conducción nerviosa del cubital o ecografía del nervio."
   },
   {
-   "id": "cubital",
-   "segmento": "codo",
-   "nombre": "Neuropatía cubital en el codo (túnel cubital)",
-   "pretest": 0.1,
-   "lr": {
-    "parestesias_cubital": {
-     "pos": 3.5,
-     "neg": 0.2,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "flex_codo_presion": {
-     "pos": 5.0,
-     "neg": 0.2,
-     "calidad": "B",
-     "refs": [
-      "Novak1994"
-     ]
-    },
-    "tinel_cubital": {
-     "pos": 2.0,
-     "neg": 0.6,
-     "calidad": "B",
-     "refs": [
-      "Novak1994"
-     ]
-    },
-    "debilidad_intrinsecos": {
-     "pos": 4.0,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "dolor_medial_codo": {
-     "pos": 1.5,
-     "neg": 0.7,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "hba1c_alta": {
-     "pos": 1.5,
-     "neg": 0.9,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "eco_cubital": {
-     "pos": 4.0,
-     "neg": 0.3,
-     "calidad": "A",
-     "refs": [
-      "Chang2018"
-     ]
-    },
-    "edx_cubital": {
-     "pos": 8.0,
-     "neg": 0.2,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "bur",
+   "seg": "codo",
+   "name": "Bursitis olecraniana",
+   "prior": 0.06,
+   "next": "Diagnóstico clínico; ecografía y punción si se sospecha infección."
   },
   {
-   "id": "bursitis_olec",
-   "segmento": "codo",
-   "nombre": "Bursitis olecraniana",
-   "pretest": 0.06,
-   "lr": {
-    "tumefaccion_posterior_codo": {
-     "pos": 12.0,
-     "neg": 0.05,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "fluctuacion_olecranon": {
-     "pos": 15.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "eco_bursa": {
-     "pos": 20.0,
-     "neg": 0.05,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "rh",
+   "seg": "codo",
+   "name": "Fractura de cabeza radial",
+   "prior": 0.05,
+   "next": "Radiografía de codo AP y lateral."
   },
   {
-   "id": "biceps_distal",
-   "segmento": "codo",
-   "nombre": "Rotura del bíceps distal",
-   "pretest": 0.03,
-   "lr": {
-    "pop_biceps": {
-     "pos": 6.0,
-     "neg": 0.2,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "hook_test": {
-     "pos": 30.0,
-     "neg": 0.05,
-     "calidad": "B",
-     "refs": [
-      "ODriscoll2007"
-     ]
-    },
-    "debilidad_supinacion": {
-     "pos": 3.0,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "deformidad_biceps": {
-     "pos": 5.0,
-     "neg": 0.4,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "rm_biceps": {
-     "pos": 20.0,
-     "neg": 0.05,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
-  },
-  {
-   "id": "fx_cabeza_radial",
-   "segmento": "codo",
-   "nombre": "Fractura de cabeza radial",
-   "pretest": 0.05,
-   "lr": {
-    "trauma_codo": {
-     "pos": 4.0,
-     "neg": 0.1,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "trauma_foosh": {
-     "pos": 2.0,
-     "neg": 0.6,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "extension_codo_incompleta": {
-     "pos": 1.9,
-     "neg": 0.07,
-     "calidad": "A",
-     "refs": [
-      "Appelboam2008"
-     ]
-    },
-    "palp_cabeza_radial": {
-     "pos": 3.0,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "rx_almohadilla": {
-     "pos": 5.0,
-     "neg": 0.3,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    },
-    "rx_cabeza_radial": {
-     "pos": 30.0,
-     "neg": 0.2,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "id": "bic",
+   "seg": "codo",
+   "name": "Rotura del bíceps distal",
+   "prior": 0.03,
+   "next": "Ecografía o RM urgente; derivación precoz a traumatología (idealmente < 3 semanas)."
   },
   {
    "id": "nip",
-   "segmento": "codo",
-   "nombre": "Síndrome del túnel radial / atrapamiento del NIP",
-   "pretest": 0.03,
-   "lr": {
-    "dolor_distal_epi": {
-     "pos": 4.0,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "supinacion_resist_dolor": {
-     "pos": 2.0,
-     "neg": 0.5,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "debilidad_ext_dedos": {
-     "pos": 6.0,
-     "neg": 0.8,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    },
-    "edx_nip": {
-     "pos": 10.0,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
-    }
-   }
+   "seg": "codo",
+   "name": "Síndrome del túnel radial / atrapamiento del NIP",
+   "prior": 0.03,
+   "next": "Diagnóstico clínico; electrodiagnóstico si hay debilidad."
   },
   {
    "id": "lcu",
-   "segmento": "codo",
-   "nombre": "Lesión del ligamento colateral cubital",
-   "pretest": 0.03,
-   "lr": {
-    "lanzador": {
-     "pos": 4.0,
-     "neg": 0.3,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
+   "seg": "codo",
+   "name": "Lesión del ligamento colateral cubital",
+   "prior": 0.03,
+   "next": "RM o artro-RM de codo."
+  }
+ ],
+ "findings": [
+  {
+   "id": "c_age",
+   "st": "ctx",
+   "who": "self",
+   "q": "¿Tiene 40 años o más?",
+   "links": {
+    "hoa": {
+     "p": 3.73,
+     "n": 0.25,
+     "l": "B",
+     "r": "EUL"
     },
-    "dolor_medial_codo": {
-     "pos": 2.5,
-     "neg": 0.2,
-     "calidad": "C",
-     "refs": [
-      "experto"
-     ]
+    "cmc": {
+     "p": 3,
+     "n": 0.25,
+     "l": "C",
+     "r": "EC"
     },
-    "moving_valgus": {
-     "pos": 4.0,
-     "neg": 0.04,
-     "calidad": "B",
-     "refs": [
-      "ODriscoll2005"
-     ]
+    "cts": {
+     "p": 1.6,
+     "n": 0.6,
+     "l": "C",
+     "r": "WA"
     },
-    "rm_lcu": {
-     "pos": 8.0,
-     "neg": 0.2,
-     "calidad": "B",
-     "refs": [
-      "experto"
-     ]
+    "tf": {
+     "p": 1.5,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    },
+    "ar": {
+     "p": 1.3,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    },
+    "rad": {
+     "p": 1.3,
+     "n": 0.8,
+     "l": "C",
+     "r": "AWR"
+    },
+    "gang": {
+     "p": 0.6,
+     "n": 1.4,
+     "l": "C",
+     "r": "GAN"
+    },
+    "sl": {
+     "p": 0.8,
+     "n": 1.2,
+     "l": "C",
+     "r": "EC"
+    },
+    "epl": {
+     "p": 1.3,
+     "n": 0.7,
+     "l": "C",
+     "r": "EC"
+    },
+    "cub": {
+     "p": 1.3,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    },
+    "bic": {
+     "p": 1.5,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    },
+    "lcu": {
+     "p": 0.4,
+     "n": 1.4,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "c_fem",
+   "st": "ctx",
+   "who": "self",
+   "q": "¿Sexo femenino?",
+   "links": {
+    "dq": {
+     "p": 1.6,
+     "n": 0.4,
+     "l": "C",
+     "r": "GOU"
+    },
+    "cmc": {
+     "p": 1.6,
+     "n": 0.5,
+     "l": "C",
+     "r": "EC"
+    },
+    "hoa": {
+     "p": 1.5,
+     "n": 0.6,
+     "l": "C",
+     "r": "EUL"
+    },
+    "ar": {
+     "p": 1.6,
+     "n": 0.5,
+     "l": "C",
+     "r": "EC"
+    },
+    "gang": {
+     "p": 1.4,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    },
+    "cts": {
+     "p": 1.3,
+     "n": 0.7,
+     "l": "C",
+     "r": "EC"
+    },
+    "tf": {
+     "p": 1.2,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    },
+    "bic": {
+     "p": 0.1,
+     "n": 1.9,
+     "l": "C",
+     "r": "EC"
+    },
+    "lcu": {
+     "p": 0.5,
+     "n": 1.4,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "c_dm",
+   "st": "ctx",
+   "who": "self",
+   "q": "¿Tiene diabetes?",
+   "links": {
+    "tf": {
+     "p": 2.2,
+     "n": 0.9,
+     "l": "C",
+     "r": "SP"
+    },
+    "cts": {
+     "p": 1.6,
+     "n": 0.95,
+     "l": "C",
+     "r": "EC"
+    },
+    "cub": {
+     "p": 1.5,
+     "n": 0.95,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "c_preg",
+   "st": "ctx",
+   "who": "self",
+   "q": "¿Embarazo o parto en los últimos 12 meses?",
+   "links": {
+    "dq": {
+     "p": 2.5,
+     "n": 0.95,
+     "l": "C",
+     "r": "EC"
+    },
+    "cts": {
+     "p": 2,
+     "n": 0.95,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "c_rep",
+   "st": "ctx",
+   "who": "self",
+   "q": "¿Usa la mano de forma intensa y repetitiva (trabajo, deporte, celular)?",
+   "links": {
+    "dq": {
+     "p": 1.8,
+     "n": 0.7,
+     "l": "C",
+     "r": "EC"
+    },
+    "tf": {
+     "p": 1.4,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    },
+    "cts": {
+     "p": 1.3,
+     "n": 0.85,
+     "l": "C",
+     "r": "EC"
+    },
+    "hoa": {
+     "p": 1.2,
+     "n": 0.9,
+     "l": "C",
+     "r": "EUL"
+    },
+    "epl": {
+     "p": 1.8,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    },
+    "epm": {
+     "p": 1.5,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    },
+    "cub": {
+     "p": 1.2,
+     "n": 0.9,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "c_trauma",
+   "st": "ctx",
+   "who": "self",
+   "grp": "trauma",
+   "q": "¿Tuvo un golpe o caída sobre la mano o muñeca en las últimas 2 semanas?",
+   "links": {
+    "esc": {
+     "p": 12,
+     "n": 0.05,
+     "l": "C",
+     "r": "EC"
+    },
+    "rad": {
+     "p": 12,
+     "n": 0.05,
+     "l": "C",
+     "r": "AWR"
+    },
+    "sl": {
+     "p": 4,
+     "n": 0.4,
+     "l": "C",
+     "r": "EC"
+    },
+    "tfcc": {
+     "p": 3,
+     "n": 0.5,
+     "l": "C",
+     "r": "EC"
+    },
+    "cts": {
+     "p": 0.5,
+     "n": 1.1,
+     "l": "C",
+     "r": "EC"
+    },
+    "dq": {
+     "p": 0.5,
+     "n": 1.1,
+     "l": "C",
+     "r": "EC"
+    },
+    "tf": {
+     "p": 0.4,
+     "n": 1.1,
+     "l": "C",
+     "r": "EC"
+    },
+    "cmc": {
+     "p": 0.5,
+     "n": 1.05,
+     "l": "C",
+     "r": "EC"
+    },
+    "hoa": {
+     "p": 0.5,
+     "n": 1.05,
+     "l": "C",
+     "r": "EC"
+    },
+    "ar": {
+     "p": 0.5,
+     "n": 1.05,
+     "l": "C",
+     "r": "EC"
+    },
+    "gang": {
+     "p": 0.7,
+     "n": 1.05,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "c_foosh",
+   "st": "ctx",
+   "who": "self",
+   "grp": "trauma",
+   "q": "¿Cayó apoyando la mano extendida?",
+   "links": {
+    "esc": {
+     "p": 2,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    },
+    "rad": {
+     "p": 2,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    },
+    "sl": {
+     "p": 2,
+     "n": 0.7,
+     "l": "C",
+     "r": "EC"
+    },
+    "tfcc": {
+     "p": 1.5,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    },
+    "rh": {
+     "p": 2,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "c_trauma_codo",
+   "st": "ctx",
+   "who": "self",
+   "seg": "codo",
+   "grp": "trauma",
+   "q": "¿Tuvo un golpe o caída sobre el codo, o con el brazo estirado, en las últimas 2 semanas?",
+   "links": {
+    "rh": {
+     "p": 10,
+     "n": 0.05,
+     "l": "C",
+     "r": "EC"
+    },
+    "bur": {
+     "p": 1.5,
+     "n": 0.9,
+     "l": "C",
+     "r": "EC"
+    },
+    "lcu": {
+     "p": 2,
+     "n": 0.7,
+     "l": "C",
+     "r": "EC"
+    },
+    "epl": {
+     "p": 0.2,
+     "n": 1.2,
+     "l": "C",
+     "r": "EC"
+    },
+    "epm": {
+     "p": 0.3,
+     "n": 1.1,
+     "l": "C",
+     "r": "EC"
+    },
+    "cub": {
+     "p": 0.6,
+     "n": 1.05,
+     "l": "C",
+     "r": "EC"
+    },
+    "nip": {
+     "p": 0.4,
+     "n": 1.05,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "c_throw",
+   "st": "ctx",
+   "who": "self",
+   "seg": "codo",
+   "q": "¿Practica un deporte de lanzamiento (béisbol, jabalina, vóleibol, balonmano)?",
+   "links": {
+    "lcu": {
+     "p": 4,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    },
+    "epm": {
+     "p": 1.5,
+     "n": 0.9,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "a_loc",
+   "st": "anam",
+   "who": "self",
+   "type": "choice",
+   "l": "C",
+   "r": "EC",
+   "q": "¿Dónde le duele más?",
+   "opts": [
+    {
+     "v": "radial",
+     "t": "Borde del pulgar de la muñeca",
+     "lr": {
+      "dq": 4,
+      "esc": 3,
+      "cmc": 1.5,
+      "sl": 1.5,
+      "rad": 1.2,
+      "tfcc": 0.2,
+      "tf": 0.3,
+      "hoa": 0.4,
+      "gang": 0.7,
+      "cts": 0.6,
+      "ar": 0.6
+     }
+    },
+    {
+     "v": "ulnar",
+     "t": "Borde del meñique de la muñeca",
+     "lr": {
+      "tfcc": 6,
+      "rad": 1,
+      "sl": 0.4,
+      "dq": 0.1,
+      "esc": 0.2,
+      "cmc": 0.1,
+      "tf": 0.3,
+      "hoa": 0.4,
+      "gang": 0.6,
+      "cts": 0.4,
+      "ar": 0.8
+     }
+    },
+    {
+     "v": "thumb",
+     "t": "Base del pulgar",
+     "lr": {
+      "cmc": 5,
+      "dq": 1.5,
+      "esc": 1.2,
+      "tf": 0.8,
+      "sl": 0.5,
+      "rad": 0.5,
+      "tfcc": 0.1,
+      "hoa": 0.8,
+      "gang": 0.6,
+      "cts": 0.6,
+      "ar": 0.6
+     }
+    },
+    {
+     "v": "dorsal",
+     "t": "Dorso de la muñeca",
+     "lr": {
+      "sl": 3,
+      "gang": 3,
+      "rad": 1.5,
+      "esc": 1.2,
+      "ar": 1.2,
+      "tfcc": 0.8,
+      "dq": 0.4,
+      "cmc": 0.3,
+      "tf": 0.2,
+      "hoa": 0.4,
+      "cts": 0.4
+     }
+    },
+    {
+     "v": "palm",
+     "t": "Palma o base de un dedo",
+     "lr": {
+      "tf": 5,
+      "cts": 1.3,
+      "gang": 1,
+      "ar": 1,
+      "hoa": 0.6,
+      "cmc": 0.4,
+      "dq": 0.2,
+      "esc": 0.2,
+      "rad": 0.3,
+      "tfcc": 0.2,
+      "sl": 0.2
+     }
+    },
+    {
+     "v": "fingers",
+     "t": "Articulaciones de los dedos",
+     "lr": {
+      "hoa": 6,
+      "ar": 3,
+      "tf": 1,
+      "cts": 0.7,
+      "cmc": 0.4,
+      "gang": 0.4,
+      "dq": 0.2,
+      "esc": 0.2,
+      "rad": 0.2,
+      "tfcc": 0.2,
+      "sl": 0.2
+     }
+    },
+    {
+     "v": "none",
+     "t": "Sin dolor: solo hormigueo o un bulto",
+     "lr": {
+      "cts": 2,
+      "gang": 1.5,
+      "dq": 0.3,
+      "tf": 0.3,
+      "cmc": 0.3,
+      "hoa": 0.3,
+      "esc": 0.2,
+      "rad": 0.2,
+      "tfcc": 0.3,
+      "sl": 0.3,
+      "ar": 0.3
+     }
+    }
+   ],
+   "seg": "mano"
+  },
+  {
+   "id": "a_katz",
+   "st": "anam",
+   "who": "self",
+   "type": "choice",
+   "grp": "cts_clin",
+   "l": "A",
+   "r": "DM",
+   "q": "Si tiene hormigueo o adormecimiento, ¿dónde lo siente?",
+   "help": "Equivale al diagrama de mano de Katz. «Toda la mano» es una estimación; los otros dos valores vienen de la revisión de JAMA.",
+   "opts": [
+    {
+     "v": "classic",
+     "t": "Pulgar, índice y/o medio",
+     "lr": {
+      "cts": 2.4
+     }
+    },
+    {
+     "v": "possible",
+     "t": "Toda la mano o incluye el meñique",
+     "lr": {
+      "cts": 1
+     }
+    },
+    {
+     "v": "none",
+     "t": "No tengo hormigueo",
+     "lr": {
+      "cts": 0.2
+     }
+    }
+   ],
+   "seg": "mano"
+  },
+  {
+   "id": "a_flick",
+   "st": "anam",
+   "who": "self",
+   "grp": "cts_clin",
+   "q": "Cuando tiene síntomas, ¿sacude la mano para aliviarlos?",
+   "help": "Signo de «flick». Muy útil en un estudio, pero aún sin validación en otros.",
+   "links": {
+    "cts": {
+     "se": 0.93,
+     "sp": 0.96,
+     "l": "B",
+     "r": "DM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "a_noct",
+   "st": "anam",
+   "who": "self",
+   "grp": "cts_clin",
+   "q": "¿El hormigueo lo despierta de noche?",
+   "help": "La revisión de JAMA mostró que este síntoma casi no ayuda a diferenciar. Se incluye para que se vea su poco peso.",
+   "links": {
+    "cts": {
+     "p": 1.2,
+     "n": 0.8,
+     "l": "A",
+     "r": "DM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "a_lock",
+   "st": "anam",
+   "who": "self",
+   "q": "¿Algún dedo se traba al doblarlo y salta al estirarlo?",
+   "links": {
+    "tf": {
+     "se": 0.9,
+     "sp": 0.95,
+     "l": "C",
+     "r": "SP"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "a_mass",
+   "st": "anam",
+   "who": "self",
+   "q": "¿Tiene un bulto visible en el dorso o en la cara palmar de la muñeca?",
+   "links": {
+    "gang": {
+     "p": 8,
+     "n": 0.15,
+     "l": "C",
+     "r": "GAN"
+    },
+    "ar": {
+     "p": 1.5,
+     "n": 0.9,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "a_stiff",
+   "st": "anam",
+   "who": "self",
+   "q": "¿Rigidez al despertar de más de 1 hora, con varias articulaciones hinchadas en ambas manos?",
+   "links": {
+    "ar": {
+     "p": 6,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    },
+    "hoa": {
+     "p": 0.6,
+     "n": 1.1,
+     "l": "C",
+     "r": "EUL"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "a_click",
+   "st": "anam",
+   "who": "self",
+   "q": "¿Siente un clic o chasquido doloroso al girar o cargar la muñeca?",
+   "links": {
+    "tfcc": {
+     "p": 2.5,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    },
+    "sl": {
+     "p": 2.5,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "a_pinch",
+   "st": "anam",
+   "who": "self",
+   "q": "¿Duele al hacer pinza, abrir frascos o girar una llave?",
+   "links": {
+    "cmc": {
+     "p": 2,
+     "n": 0.4,
+     "l": "C",
+     "r": "EC"
+    },
+    "dq": {
+     "p": 1.5,
+     "n": 0.7,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "a_rot",
+   "st": "anam",
+   "who": "self",
+   "q": "¿Duele al girar el antebrazo (abrir una puerta, estrujar ropa)?",
+   "links": {
+    "tfcc": {
+     "p": 2.5,
+     "n": 0.5,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "a_loc_codo",
+   "st": "anam",
+   "who": "self",
+   "seg": "codo",
+   "type": "choice",
+   "l": "C",
+   "r": "EC",
+   "q": "¿Dónde le duele más el codo o el antebrazo?",
+   "opts": [
+    {
+     "v": "lat",
+     "t": "Cara externa del codo",
+     "lr": {
+      "epl": 4,
+      "nip": 1.5,
+      "rh": 1.5,
+      "epm": 0.2,
+      "cub": 0.3,
+      "bur": 0.3,
+      "bic": 0.3,
+      "lcu": 0.2
+     }
+    },
+    {
+     "v": "med",
+     "t": "Cara interna del codo",
+     "lr": {
+      "epm": 4,
+      "lcu": 3,
+      "cub": 2,
+      "epl": 0.15,
+      "nip": 0.2,
+      "rh": 0.4,
+      "bur": 0.3,
+      "bic": 0.3
+     }
+    },
+    {
+     "v": "post",
+     "t": "Punta del codo",
+     "lr": {
+      "bur": 6,
+      "epl": 0.3,
+      "epm": 0.3,
+      "cub": 0.5,
+      "rh": 0.6,
+      "bic": 0.2,
+      "nip": 0.2,
+      "lcu": 0.4
+     }
+    },
+    {
+     "v": "ant",
+     "t": "Pliegue del codo (por delante)",
+     "lr": {
+      "bic": 6,
+      "rh": 1,
+      "epl": 0.3,
+      "epm": 0.3,
+      "cub": 0.3,
+      "bur": 0.2,
+      "nip": 0.6,
+      "lcu": 0.3
+     }
+    },
+    {
+     "v": "fore",
+     "t": "Antebrazo, unos dedos bajo el codo por fuera",
+     "lr": {
+      "nip": 4,
+      "epl": 1.5,
+      "epm": 0.3,
+      "cub": 0.3,
+      "bur": 0.2,
+      "bic": 0.5,
+      "rh": 0.5,
+      "lcu": 0.2
+     }
+    },
+    {
+     "v": "none",
+     "t": "Sin dolor: solo hormigueo o hinchazón",
+     "lr": {
+      "cub": 2,
+      "bur": 1.5,
+      "epl": 0.2,
+      "epm": 0.2,
+      "rh": 0.2,
+      "bic": 0.3,
+      "nip": 0.4,
+      "lcu": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "id": "a_grip",
+   "st": "anam",
+   "who": "self",
+   "seg": "codo",
+   "grp": "epl_clin",
+   "q": "¿Le duele el codo por fuera al agarrar, levantar una taza o dar la mano?",
+   "links": {
+    "epl": {
+     "p": 3,
+     "n": 0.2,
+     "l": "C",
+     "r": "EC"
+    },
+    "nip": {
+     "p": 1.5,
+     "n": 0.7,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "a_ulnpar",
+   "st": "anam",
+   "who": "self",
+   "seg": "codo",
+   "grp": "cub_clin",
+   "q": "¿Siente hormigueo o adormecimiento en el meñique y la mitad del anular?",
+   "links": {
+    "cub": {
+     "p": 3.5,
+     "n": 0.2,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "a_ulnflex",
+   "st": "anam",
+   "who": "self",
+   "seg": "codo",
+   "grp": "cub_clin",
+   "q": "¿El hormigueo empeora con el codo doblado (al hablar por teléfono o dormir con el brazo flexionado)?",
+   "links": {
+    "cub": {
+     "p": 3,
+     "n": 0.5,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "a_pop",
+   "st": "anam",
+   "who": "self",
+   "seg": "codo",
+   "grp": "bic_clin",
+   "q": "¿Sintió un chasquido brusco en el pliegue del codo al levantar algo pesado, y luego apareció un moretón?",
+   "links": {
+    "bic": {
+     "p": 8,
+     "n": 0.2,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "a_bump",
+   "st": "anam",
+   "who": "self",
+   "seg": "codo",
+   "grp": "bur_clin",
+   "q": "¿Tiene una bolsa blanda e hinchada en la punta del codo?",
+   "links": {
+    "bur": {
+     "p": 12,
+     "n": 0.05,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "a_throwpain",
+   "st": "anam",
+   "who": "self",
+   "seg": "codo",
+   "grp": "lcu_clin",
+   "q": "¿Le duele por dentro del codo justo al lanzar, cuando el brazo va hacia atrás?",
+   "links": {
+    "lcu": {
+     "p": 4,
+     "n": 0.2,
+     "l": "C",
+     "r": "EC"
+    },
+    "epm": {
+     "p": 1.5,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_deform",
+   "st": "ex",
+   "who": "self",
+   "grp": "rad_clin",
+   "q": "¿Se ve la muñeca deformada después del golpe?",
+   "links": {
+    "rad": {
+     "se": 0.35,
+     "sp": 0.98,
+     "l": "C",
+     "r": "AWR"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_swell",
+   "st": "ex",
+   "who": "self",
+   "grp": "rad_clin",
+   "q": "¿La muñeca está hinchada después del golpe?",
+   "links": {
+    "rad": {
+     "p": 1.6,
+     "n": 0.4,
+     "l": "C",
+     "r": "AWR"
+    },
+    "esc": {
+     "p": 1.3,
+     "n": 0.7,
+     "l": "C",
+     "r": "AWR"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_radtend",
+   "st": "ex",
+   "who": "self",
+   "grp": "rad_clin",
+   "q": "¿Duele al presionar el extremo del radio, 2–3 cm sobre el pliegue de la muñeca?",
+   "links": {
+    "rad": {
+     "se": 0.95,
+     "sp": 0.45,
+     "l": "C",
+     "r": "AWR"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_snuff",
+   "st": "ex",
+   "who": "self",
+   "grp": "esc_clin",
+   "q": "¿Duele al presionar la tabaquera anatómica?",
+   "help": "Es el hueco que aparece en la base del pulgar, en el dorso, al estirar el pulgar hacia atrás.",
+   "links": {
+    "esc": {
+     "se": 0.92,
+     "sp": 0.48,
+     "l": "A",
+     "r": "COV"
+    },
+    "rad": {
+     "p": 1.3,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_tuber",
+   "st": "ex",
+   "who": "pro",
+   "grp": "esc_clin",
+   "q": "Dolor a la palpación del tubérculo del escafoides",
+   "links": {
+    "esc": {
+     "se": 0.9,
+     "sp": 0.4,
+     "l": "A",
+     "r": "MAL"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_axial",
+   "st": "ex",
+   "who": "pro",
+   "grp": "esc_clin",
+   "q": "Dolor con compresión axial del pulgar",
+   "help": "Especificidad del metaanálisis; sensibilidad aproximada.",
+   "links": {
+    "esc": {
+     "se": 0.7,
+     "sp": 0.66,
+     "l": "A",
+     "r": "PRS"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_supin",
+   "st": "ex",
+   "who": "pro",
+   "grp": "esc_clin",
+   "q": "Dolor al supinar el antebrazo contra resistencia",
+   "help": "Estudiado en personas con radiografía inicial normal. Necesita validación externa.",
+   "links": {
+    "esc": {
+     "se": 0.98,
+     "sp": 0.979,
+     "l": "B",
+     "r": "COV"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_what",
+   "st": "ex",
+   "who": "pro",
+   "grp": "dq_clin",
+   "q": "Test WHAT positivo (flexión máxima de muñeca + abducción del pulgar contra resistencia)",
+   "links": {
+    "dq": {
+     "se": 0.99,
+     "sp": 0.29,
+     "l": "B",
+     "r": "GOU"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_eich",
+   "st": "ex",
+   "who": "self",
+   "grp": "dq_clin",
+   "q": "Pulgar dentro del puño y muñeca hacia el meñique: ¿duele en el borde del pulgar?",
+   "help": "Test de Eichhoff, a menudo llamado Finkelstein. Da muchos falsos positivos.",
+   "links": {
+    "dq": {
+     "se": 0.89,
+     "sp": 0.14,
+     "l": "B",
+     "r": "GOU"
+    },
+    "cmc": {
+     "p": 1.3,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_dqpalp",
+   "st": "ex",
+   "who": "self",
+   "grp": "dq_clin",
+   "q": "¿Duele al presionar el borde de la muñeca del lado del pulgar (estiloides radial)?",
+   "links": {
+    "dq": {
+     "p": 2.2,
+     "n": 0.2,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_tmcext",
+   "st": "ex",
+   "who": "pro",
+   "grp": "cmc_clin",
+   "q": "Test de extensión metacarpiana del pulgar positivo",
+   "links": {
+    "cmc": {
+     "se": 0.94,
+     "sp": 0.95,
+     "l": "B",
+     "r": "TMC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_grind",
+   "st": "ex",
+   "who": "pro",
+   "grp": "cmc_clin",
+   "q": "Test de grind (compresión y rotación) positivo",
+   "links": {
+    "cmc": {
+     "se": 0.44,
+     "sp": 0.92,
+     "l": "B",
+     "r": "TMC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_tmcpalp",
+   "st": "ex",
+   "who": "self",
+   "grp": "cmc_clin",
+   "q": "¿Duele al presionar la base del pulgar, en la cara palmar?",
+   "links": {
+    "cmc": {
+     "se": 0.94,
+     "sp": 0.81,
+     "l": "B",
+     "r": "TMC"
+    },
+    "dq": {
+     "p": 1.3,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_heb",
+   "st": "ex",
+   "who": "self",
+   "q": "¿Tiene nódulos duros en las articulaciones de los dedos (Heberden o Bouchard)?",
+   "links": {
+    "hoa": {
+     "p": 4,
+     "n": 0.4,
+     "l": "C",
+     "r": "EUL"
+    },
+    "ar": {
+     "p": 0.6,
+     "n": 1.05,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_a1",
+   "st": "ex",
+   "who": "self",
+   "q": "¿Hay un nódulo doloroso en la palma, en la base del dedo que se traba?",
+   "links": {
+    "tf": {
+     "se": 0.8,
+     "sp": 0.9,
+     "l": "C",
+     "r": "SP"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_trans",
+   "st": "ex",
+   "who": "self",
+   "q": "Al iluminar el bulto con una linterna en la oscuridad, ¿deja pasar la luz?",
+   "links": {
+    "gang": {
+     "se": 0.8,
+     "sp": 0.9,
+     "l": "C",
+     "r": "GAN"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_syn",
+   "st": "ex",
+   "who": "pro",
+   "q": "Sinovitis: nudillos o articulaciones de los dedos blandos e hinchados en ambas manos",
+   "links": {
+    "ar": {
+     "p": 4,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    },
+    "hoa": {
+     "p": 0.8,
+     "n": 1,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_fovea",
+   "st": "ex",
+   "who": "pro",
+   "grp": "tfcc_clin",
+   "q": "Signo de la fóvea cubital positivo",
+   "help": "Un estudio mayor posterior encontró valores más bajos; por eso se aplica ajuste B.",
+   "links": {
+    "tfcc": {
+     "se": 0.95,
+     "sp": 0.865,
+     "l": "B",
+     "r": "TAY"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_druj",
+   "st": "ex",
+   "who": "pro",
+   "grp": "tfcc_clin",
+   "q": "Inestabilidad radiocubital distal (test de tecla de piano)",
+   "links": {
+    "tfcc": {
+     "se": 0.59,
+     "sp": 0.96,
+     "l": "B",
+     "r": "WHL"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_watson",
+   "st": "ex",
+   "who": "pro",
+   "q": "Test de Watson (desplazamiento del escafoides) positivo",
+   "links": {
+    "sl": {
+     "se": 0.69,
+     "sp": 0.66,
+     "l": "B",
+     "r": "LAS"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_hypal",
+   "st": "ex",
+   "who": "pro",
+   "grp": "cts_clin",
+   "q": "Hipoalgesia del índice comparado con el meñique",
+   "links": {
+    "cts": {
+     "p": 3.1,
+     "n": 0.7,
+     "l": "A",
+     "r": "DM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_abd",
+   "st": "ex",
+   "who": "pro",
+   "grp": "cts_clin",
+   "q": "Debilidad de abducción del pulgar",
+   "links": {
+    "cts": {
+     "p": 1.8,
+     "n": 0.5,
+     "l": "A",
+     "r": "DM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_phalen",
+   "st": "ex",
+   "who": "self",
+   "grp": "cts_clin",
+   "q": "Dorsos de las manos juntos con las muñecas dobladas 60 s: ¿aparece hormigueo? (Phalen)",
+   "links": {
+    "cts": {
+     "p": 1.3,
+     "n": 0.7,
+     "l": "A",
+     "r": "DM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_tinel",
+   "st": "ex",
+   "who": "self",
+   "grp": "cts_clin",
+   "q": "Golpecitos sobre la cara palmar de la muñeca: ¿da corriente hacia los dedos? (Tinel)",
+   "links": {
+    "cts": {
+     "p": 1.4,
+     "n": 0.8,
+     "l": "A",
+     "r": "DM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "e_wainner",
+   "st": "ex",
+   "who": "pro",
+   "type": "choice",
+   "grp": "cts_clin",
+   "l": "B",
+   "r": "WA",
+   "q": "Regla de Wainner: ¿cuántos de los 5 criterios son positivos?",
+   "help": "Alivio al sacudir la mano · índice de muñeca > 0,67 · escala de severidad > 1,9 · menor sensibilidad en el pulgar · edad > 45. Los valores para 2 y 3 son interpolados.",
+   "opts": [
+    {
+     "v": "01",
+     "t": "0 a 1",
+     "lr": {
+      "cts": 0.14
+     }
+    },
+    {
+     "v": "2",
+     "t": "2",
+     "lr": {
+      "cts": 0.6
+     }
+    },
+    {
+     "v": "3",
+     "t": "3",
+     "lr": {
+      "cts": 1.5
+     }
+    },
+    {
+     "v": "4",
+     "t": "4",
+     "lr": {
+      "cts": 4.6
+     }
+    },
+    {
+     "v": "5",
+     "t": "5",
+     "lr": {
+      "cts": 18.3
+     }
+    }
+   ],
+   "seg": "mano"
+  },
+  {
+   "id": "e_noext",
+   "st": "ex",
+   "who": "self",
+   "seg": "codo",
+   "grp": "rh_clin",
+   "q": "Después de la caída, ¿NO logra estirar el codo por completo?",
+   "help": "Elbow extension test: si el codo se estira completamente, una fractura es poco probable.",
+   "links": {
+    "rh": {
+     "p": 2.5,
+     "n": 0.05,
+     "l": "B",
+     "r": "APP"
+    },
+    "epl": {
+     "p": 0.4,
+     "n": 1.1,
+     "l": "C",
+     "r": "EC"
+    },
+    "epm": {
+     "p": 0.5,
+     "n": 1.05,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_rhpalp",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "rh_clin",
+   "q": "Dolor a la palpación de la cabeza radial",
+   "links": {
+    "rh": {
+     "p": 3,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_epilat",
+   "st": "ex",
+   "who": "self",
+   "seg": "codo",
+   "grp": "epl_clin",
+   "q": "¿Duele al presionar el hueso saliente de la cara externa del codo?",
+   "help": "Es el epicóndilo lateral, con el codo en ángulo recto.",
+   "links": {
+    "epl": {
+     "p": 2.5,
+     "n": 0.1,
+     "l": "B",
+     "r": "SAR"
+    }
+   }
+  },
+  {
+   "id": "e_cozen",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "epl_clin",
+   "q": "Test de Cozen positivo (extensión de muñeca contra resistencia reproduce el dolor lateral)",
+   "links": {
+    "epl": {
+     "p": 2,
+     "n": 0.2,
+     "l": "B",
+     "r": "SAR"
+    }
+   }
+  },
+  {
+   "id": "e_maud",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "epl_clin",
+   "q": "Test de Maudsley positivo (extensión resistida del dedo medio)",
+   "links": {
+    "epl": {
+     "p": 2,
+     "n": 0.4,
+     "l": "B",
+     "r": "SAR"
+    }
+   }
+  },
+  {
+   "id": "e_pfg",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "epl_clin",
+   "q": "Fuerza de prensión sin dolor reducida más de 10 % respecto del lado sano (dinamómetro)",
+   "links": {
+    "epl": {
+     "p": 3,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_epimed",
+   "st": "ex",
+   "who": "self",
+   "seg": "codo",
+   "grp": "epm_clin",
+   "q": "¿Duele al presionar el hueso saliente de la cara interna del codo?",
+   "links": {
+    "epm": {
+     "p": 4,
+     "n": 0.1,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_flexres",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "epm_clin",
+   "q": "Dolor medial con flexión de muñeca o pronación contra resistencia",
+   "links": {
+    "epm": {
+     "p": 3,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_flexpress",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "cub_clin",
+   "q": "Flexión de codo + presión sobre el surco cubital reproduce el hormigueo (60 s)",
+   "links": {
+    "cub": {
+     "p": 5,
+     "n": 0.2,
+     "l": "B",
+     "r": "NOV"
+    }
+   }
+  },
+  {
+   "id": "e_tinelcub",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "cub_clin",
+   "q": "Tinel en el surco cubital positivo",
+   "links": {
+    "cub": {
+     "p": 2,
+     "n": 0.6,
+     "l": "B",
+     "r": "NOV"
+    }
+   }
+  },
+  {
+   "id": "e_froment",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "q": "Debilidad de intrínsecos de la mano o signo de Froment positivo",
+   "links": {
+    "cub": {
+     "p": 4,
+     "n": 0.7,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_fluct",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "bur_clin",
+   "q": "Tumefacción fluctuante y bien delimitada sobre el olécranon",
+   "links": {
+    "bur": {
+     "p": 15,
+     "n": 0.1,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_hook",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "bic_clin",
+   "q": "Hook test positivo (no se logra enganchar el tendón del bíceps en el pliegue del codo)",
+   "links": {
+    "bic": {
+     "p": 30,
+     "n": 0.05,
+     "l": "B",
+     "r": "ODH"
+    }
+   }
+  },
+  {
+   "id": "e_supweak",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "bic_clin",
+   "q": "Debilidad de supinación comparada con el lado sano",
+   "links": {
+    "bic": {
+     "p": 3,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_frohse",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "nip_clin",
+   "q": "Dolor a la presión 3–5 cm bajo el epicóndilo lateral, sobre el músculo supinador",
+   "links": {
+    "nip": {
+     "p": 4,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_supres",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "nip_clin",
+   "q": "Dolor con supinación contra resistencia",
+   "links": {
+    "nip": {
+     "p": 2,
+     "n": 0.5,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_fingext",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "q": "Debilidad para extender los dedos con sensibilidad normal",
+   "links": {
+    "nip": {
+     "p": 6,
+     "n": 0.8,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "e_mvst",
+   "st": "ex",
+   "who": "pro",
+   "seg": "codo",
+   "grp": "lcu_clin",
+   "q": "Moving valgus stress test positivo",
+   "links": {
+    "lcu": {
+     "se": 1.0,
+     "sp": 0.75,
+     "l": "B",
+     "r": "ODM"
+    }
+   }
+  },
+  {
+   "id": "l_ccp",
+   "st": "lab",
+   "who": "lab",
+   "grp": "ar_sero",
+   "q": "Anti-CCP positivo",
+   "links": {
+    "ar": {
+     "se": 0.67,
+     "sp": 0.95,
+     "l": "A",
+     "r": "NIS"
+    }
+   }
+  },
+  {
+   "id": "l_rf",
+   "st": "lab",
+   "who": "lab",
+   "grp": "ar_sero",
+   "q": "Factor reumatoide positivo",
+   "links": {
+    "ar": {
+     "se": 0.69,
+     "sp": 0.85,
+     "l": "A",
+     "r": "NIS"
+    }
+   }
+  },
+  {
+   "id": "l_pcr",
+   "st": "lab",
+   "who": "lab",
+   "q": "PCR o VHS elevadas",
+   "links": {
+    "ar": {
+     "p": 2.5,
+     "n": 0.5,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "l_tsh",
+   "st": "lab",
+   "who": "lab",
+   "q": "TSH alterada (hipotiroidismo)",
+   "links": {
+    "cts": {
+     "p": 1.4,
+     "n": 0.97,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "i_rxrad",
+   "st": "img",
+   "who": "img",
+   "q": "Radiografía: fractura de radio distal",
+   "links": {
+    "rad": {
+     "se": 0.97,
+     "sp": 0.99,
+     "l": "C",
+     "r": "AWR"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_rxesc",
+   "st": "img",
+   "who": "img",
+   "grp": "esc_img",
+   "q": "Radiografía inicial: fractura de escafoides visible",
+   "help": "Una radiografía inicial normal no descarta la fractura.",
+   "links": {
+    "esc": {
+     "se": 0.75,
+     "sp": 0.99,
+     "l": "C",
+     "r": "COCH"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_rmesc",
+   "st": "img",
+   "who": "img",
+   "grp": "esc_img",
+   "q": "RM: fractura de escafoides",
+   "links": {
+    "esc": {
+     "se": 0.96,
+     "sp": 0.99,
+     "l": "A",
+     "r": "YIN"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_tcesc",
+   "st": "img",
+   "who": "img",
+   "grp": "esc_img",
+   "q": "TC: fractura de escafoides",
+   "links": {
+    "esc": {
+     "se": 0.72,
+     "sp": 0.99,
+     "l": "A",
+     "r": "COCH"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_ncs",
+   "st": "img",
+   "who": "img",
+   "grp": "cts_test",
+   "q": "Estudio de conducción nerviosa: mediano alterado en el carpo",
+   "links": {
+    "cts": {
+     "se": 0.85,
+     "sp": 0.95,
+     "l": "A",
+     "r": "AAEM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_usmed",
+   "st": "img",
+   "who": "img",
+   "grp": "cts_test",
+   "q": "Ecografía: nervio mediano engrosado (área ≥ 10 mm² aprox.)",
+   "links": {
+    "cts": {
+     "se": 0.78,
+     "sp": 0.87,
+     "l": "A",
+     "r": "FOW"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_rmtfcc",
+   "st": "img",
+   "who": "img",
+   "grp": "tfcc_img",
+   "q": "RM: lesión del fibrocartílago triangular",
+   "links": {
+    "tfcc": {
+     "se": 0.76,
+     "sp": 0.82,
+     "l": "A",
+     "r": "TFM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_artro",
+   "st": "img",
+   "who": "img",
+   "grp": "tfcc_img",
+   "q": "Artro-RM: lesión del fibrocartílago triangular",
+   "links": {
+    "tfcc": {
+     "se": 0.78,
+     "sp": 0.85,
+     "l": "A",
+     "r": "TFM"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_rmsl",
+   "st": "img",
+   "who": "img",
+   "grp": "sl_img",
+   "q": "RM 3T: rotura del ligamento escafolunar",
+   "links": {
+    "sl": {
+     "se": 0.89,
+     "sp": 0.99,
+     "l": "B",
+     "r": "MAG"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_rxsl",
+   "st": "img",
+   "who": "img",
+   "grp": "sl_img",
+   "q": "Radiografía: separación escafolunar mayor de 3 mm",
+   "links": {
+    "sl": {
+     "se": 0.4,
+     "sp": 0.97,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_usa1",
+   "st": "img",
+   "who": "img",
+   "q": "Ecografía: polea A1 engrosada (> 0,62 mm)",
+   "links": {
+    "tf": {
+     "se": 0.85,
+     "sp": 0.85,
+     "l": "B",
+     "r": "TFU"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_usgang",
+   "st": "img",
+   "who": "img",
+   "q": "Ecografía: lesión quística",
+   "links": {
+    "gang": {
+     "se": 0.95,
+     "sp": 0.95,
+     "l": "C",
+     "r": "GAN"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_usdq",
+   "st": "img",
+   "who": "img",
+   "q": "Ecografía: tenosinovitis del 1er compartimento extensor",
+   "links": {
+    "dq": {
+     "se": 0.9,
+     "sp": 0.9,
+     "l": "C",
+     "r": "GOU"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_rxcmc",
+   "st": "img",
+   "who": "img",
+   "q": "Radiografía: artrosis trapeciometacarpiana (Eaton ≥ 2)",
+   "links": {
+    "cmc": {
+     "se": 0.9,
+     "sp": 0.9,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_rxhoa",
+   "st": "img",
+   "who": "img",
+   "q": "Radiografía: artrosis interfalángica (pinzamiento u osteofitos)",
+   "links": {
+    "hoa": {
+     "se": 0.85,
+     "sp": 0.85,
+     "l": "C",
+     "r": "EUL"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_eros",
+   "st": "img",
+   "who": "img",
+   "q": "Imagen: erosiones o sinovitis activa (Rx o ecografía Doppler)",
+   "links": {
+    "ar": {
+     "p": 3,
+     "n": 0.6,
+     "l": "C",
+     "r": "EC"
+    }
+   },
+   "seg": "mano"
+  },
+  {
+   "id": "i_usepl",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "q": "Ecografía: tendinopatía del extensor común (engrosamiento, hipoecogenicidad)",
+   "links": {
+    "epl": {
+     "p": 3.5,
+     "n": 0.25,
+     "l": "A",
+     "r": "DON"
+    }
+   }
+  },
+  {
+   "id": "i_usepm",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "q": "Ecografía: tendinopatía del flexor-pronador común",
+   "links": {
+    "epm": {
+     "p": 4,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "i_uscub",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "grp": "cub_test",
+   "q": "Ecografía: nervio cubital engrosado en el codo (área ≥ 10 mm² aprox.)",
+   "links": {
+    "cub": {
+     "p": 4,
+     "n": 0.3,
+     "l": "A",
+     "r": "CHG"
+    }
+   }
+  },
+  {
+   "id": "i_ncscub",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "grp": "cub_test",
+   "q": "Estudio de conducción nerviosa: cubital alterado en el codo",
+   "links": {
+    "cub": {
+     "p": 8,
+     "n": 0.2,
+     "l": "B",
+     "r": "AAEMU"
+    }
+   }
+  },
+  {
+   "id": "i_usbur",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "q": "Ecografía: colección en la bursa olecraniana",
+   "links": {
+    "bur": {
+     "p": 20,
+     "n": 0.05,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "i_fatpad",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "grp": "rh_img",
+   "q": "Radiografía: signo de la almohadilla grasa posterior (derrame)",
+   "links": {
+    "rh": {
+     "p": 5,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "i_rxrh",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "grp": "rh_img",
+   "q": "Radiografía: fractura de cabeza radial",
+   "links": {
+    "rh": {
+     "p": 30,
+     "n": 0.2,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "i_rmbic",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "q": "Ecografía o RM: rotura del bíceps distal",
+   "links": {
+    "bic": {
+     "p": 20,
+     "n": 0.05,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "i_rmlcu",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "q": "RM o artro-RM: lesión del ligamento colateral cubital",
+   "links": {
+    "lcu": {
+     "p": 8,
+     "n": 0.2,
+     "l": "C",
+     "r": "EC"
+    }
+   }
+  },
+  {
+   "id": "i_ncsnip",
+   "st": "img",
+   "who": "img",
+   "seg": "codo",
+   "q": "Electrodiagnóstico: compromiso del nervio interóseo posterior",
+   "links": {
+    "nip": {
+     "p": 10,
+     "n": 0.3,
+     "l": "C",
+     "r": "EC"
     }
    }
   }
  ],
- "casos": [
+ "redFlags": [
   {
-   "id": "c1",
-   "nombre": "Mujer 54 a, hormigueo nocturno en 3 primeros dedos",
-   "esperado": [
-    "stc"
-   ],
-   "respuestas": {
-    "sexo_fem": 1,
-    "edad_mayor_50": 1,
-    "parestesias_mediano": 1,
-    "sintomas_nocturnos": 1,
-    "phalen": 1,
-    "hipoalgesia_mediano": 1,
-    "eco_mediano": 1,
-    "trauma_foosh": 0
-   }
+   "id": "r_inf",
+   "q": "¿Dedo o mano roja, caliente e hinchada, con o sin fiebre?",
+   "msg": "Posible infección de la mano.",
+   "seg": "mano"
   },
   {
-   "id": "c2",
-   "nombre": "Puérpera con dolor radial al tomar en brazos al bebé",
-   "esperado": [
-    "dequervain"
-   ],
-   "respuestas": {
-    "embarazo": 1,
-    "sexo_fem": 1,
-    "dolor_radial_muneca": 1,
-    "dolor_1er_compartimento": 1,
-    "what_test": 1,
-    "trauma_foosh": 0,
-    "parestesias_mediano": 0
-   }
+   "id": "r_kan",
+   "q": "¿Dedo doblado, hinchado como salchicha y con dolor fuerte al intentar estirarlo?",
+   "msg": "Signos de Kanavel: posible infección de la vaina del tendón flexor. Es una urgencia quirúrgica (sensibilidad de los signos 91–97 %).",
+   "r": "KEN",
+   "seg": "mano"
   },
   {
-   "id": "c3",
-   "nombre": "Hombre 24 a, caída en bicicleta, Rx normal",
-   "esperado": [
-    "fx_escafoides"
-   ],
-   "respuestas": {
-    "trauma_foosh": 1,
-    "dolor_radial_muneca": 1,
-    "tabaquera": 1,
-    "tuberculo_escafoides": 1,
-    "rx_escafoides": 0,
-    "rx_radio": 0,
-    "rm_escafoides": 1,
-    "deformidad_muneca": 0
-   }
+   "id": "r_bite",
+   "q": "¿Herida punzante o mordedura (humana o animal) en la mano?",
+   "msg": "Alto riesgo de infección profunda.",
+   "seg": "mano"
   },
   {
-   "id": "c4",
-   "nombre": "Diabético con dedo anular que se traba",
-   "esperado": [
-    "gatillo"
-   ],
-   "respuestas": {
-    "bloqueo_dedo": 1,
-    "nodulo_a1": 1,
-    "hba1c_alta": 1
-   }
+   "id": "r_def",
+   "q": "¿Deformidad evidente, hueso expuesto o herida abierta tras el golpe?",
+   "msg": "Posible fractura desplazada o expuesta."
   },
   {
-   "id": "c5",
-   "nombre": "Carpintero 45 a, dolor lateral del codo al agarrar",
-   "esperado": [
-    "epi_lat"
-   ],
-   "respuestas": {
-    "dolor_lateral_codo": 1,
-    "repetitivo": 1,
-    "palp_epi_lat": 1,
-    "cozen": 1,
-    "maudsley": 1,
-    "dolor_medial_codo": 0,
-    "trauma_codo": 0
-   }
+   "id": "r_vasc",
+   "q": "¿Mano o dedos fríos, pálidos o azulados, o pérdida súbita de fuerza o sensibilidad?",
+   "msg": "Posible compromiso vascular o nervioso agudo."
   },
   {
-   "id": "c6",
-   "nombre": "Hormigueo en meñique al hablar por teléfono",
-   "esperado": [
-    "cubital"
-   ],
-   "respuestas": {
-    "parestesias_cubital": 1,
-    "flex_codo_presion": 1,
-    "tinel_cubital": 1,
-    "eco_cubital": 1,
-    "parestesias_mediano": 0
-   }
+   "id": "r_comp",
+   "q": "¿Dolor que aumenta sin control dentro de un yeso o vendaje apretado?",
+   "msg": "Posible síndrome compartimental."
   },
   {
-   "id": "c7",
-   "nombre": "Hombre 42 a, chasquido al levantar un mueble",
-   "esperado": [
-    "biceps_distal"
-   ],
-   "respuestas": {
-    "pop_biceps": 1,
-    "hook_test": 1,
-    "debilidad_supinacion": 1,
-    "deformidad_biceps": 1
-   }
+   "id": "r_tumor",
+   "q": "¿Bulto duro que crece rápido, o dolor nocturno con baja de peso sin explicación?",
+   "msg": "Requiere estudio para descartar un tumor."
   },
   {
-   "id": "c8",
-   "nombre": "Caída sobre la mano, no extiende el codo",
-   "esperado": [
-    "fx_cabeza_radial"
-   ],
-   "respuestas": {
-    "trauma_codo": 1,
-    "trauma_foosh": 1,
-    "extension_codo_incompleta": 1,
-    "palp_cabeza_radial": 1,
-    "rx_almohadilla": 1,
-    "deformidad_muneca": 0,
-    "tabaquera": 0,
-    "tumefaccion_dorsal": 0
-   }
+   "id": "r_bur",
+   "seg": "codo",
+   "q": "¿Codo rojo, caliente e hinchado, con fiebre o una herida cerca?",
+   "msg": "Posible bursitis o artritis séptica del codo."
   },
   {
-   "id": "c9",
-   "nombre": "Administrativa 50 a: hormigueo nocturno + dolor lateral de codo (ambos segmentos)",
-   "esperado": [
-    "stc",
-    "epi_lat"
-   ],
-   "respuestas": {
-    "sexo_fem": 1,
-    "edad_mayor_50": 1,
-    "repetitivo": 1,
-    "parestesias_mediano": 1,
-    "sintomas_nocturnos": 1,
-    "tinel_carpo": 1,
-    "hipoalgesia_mediano": 1,
-    "dolor_lateral_codo": 1,
-    "palp_epi_lat": 1,
-    "cozen": 1
-   }
+   "id": "r_cmpab",
+   "seg": "codo",
+   "q": "¿Antebrazo muy tenso y doloroso tras un golpe, con dolor intenso al estirar los dedos?",
+   "msg": "Posible síndrome compartimental del antebrazo."
+  },
+  {
+   "id": "r_lux",
+   "seg": "codo",
+   "q": "¿El codo quedó deformado o trabado y no se puede mover tras la caída?",
+   "msg": "Posible luxación o fractura del codo."
   }
  ],
- "referencias": {
-  "dArcy2000": "D'Arcy CA, McGee S. The rational clinical examination. Does this patient have carpal tunnel syndrome? JAMA. 2000;283(23):3110-7.",
-  "Wainner2005": "Wainner RS, et al. Development of a clinical prediction rule for the diagnosis of carpal tunnel syndrome. Arch Phys Med Rehabil. 2005;86(4):609-18.",
-  "Fowler2011": "Fowler JR, Gaughan JP, Ilyas AM. The sensitivity and specificity of ultrasound for the diagnosis of carpal tunnel syndrome: a meta-analysis. Clin Orthop Relat Res. 2011;469(4):1089-94.",
-  "Goubau2014": "Goubau JF, et al. The wrist hyperflexion and abduction of the thumb (WHAT) test: a more specific and sensitive test to diagnose de Quervain tenosynovitis than the Eichhoff's test. J Hand Surg Eur. 2014;39(3):286-92.",
-  "Carpenter2014": "Carpenter CR, et al. Adult scaphoid fracture. Acad Emerg Med. 2014;21(2):101-21.",
-  "Mallee2015": "Mallee WH, et al. Computed tomography versus magnetic resonance imaging versus bone scintigraphy for clinically suspected scaphoid fractures in patients with negative plain radiographs. Cochrane Database Syst Rev. 2015;(6):CD010023.",
-  "Tay2007": "Tay SC, Tomita K, Berger RA. The 'ulnar fovea sign' for defining ulnar wrist pain: an analysis of sensitivity and specificity. J Hand Surg Am. 2007;32(4):438-44.",
-  "Smith2012": "Smith TO, et al. Diagnostic accuracy of MRI and MR arthrography for triangular fibrocartilaginous complex injury: a systematic review and meta-analysis. J Bone Joint Surg Am. 2012;94(9):824-32.",
-  "Choa2014": "Choa RM, et al. A prospective case-control study to compare the sensitivity and specificity of the grind and traction-shift tests in osteoarthritis of the thumb carpometacarpal joint. J Hand Surg Eur. 2014;39(3):282-5.",
-  "Makkouk2008": "Makkouk AH, et al. Trigger finger: etiology, evaluation, and treatment. Curr Rev Musculoskelet Med. 2008;1(2):92-6.",
-  "Nishimura2007": "Nishimura K, et al. Meta-analysis: diagnostic accuracy of anti-cyclic citrullinated peptide antibody and rheumatoid factor for rheumatoid arthritis. Ann Intern Med. 2007;146(11):797-808.",
-  "Aletaha2010": "Aletaha D, et al. 2010 Rheumatoid arthritis classification criteria: an ACR/EULAR collaborative initiative. Arthritis Rheum. 2010;62(9):2569-81.",
-  "Valdes2013": "Valdes K, LaStayo P. The value of provocative tests for the wrist and elbow: a literature review. J Hand Ther. 2013;26(1):32-43.",
-  "Saroja2014": "Saroja G, et al. Diagnostic accuracy of provocative tests in lateral epicondylitis. Int J Physiother Res. 2014;2(6):815-23.",
-  "Dones2014": "Dones VC, et al. The diagnostic validity of musculoskeletal ultrasound in lateral epicondylalgia: a systematic review. BMC Med Imaging. 2014;14:10.",
-  "Novak1994": "Novak CB, Lee GW, Mackinnon SE, Lay L. Provocative testing for cubital tunnel syndrome. J Hand Surg Am. 1994;19(5):817-20.",
-  "Chang2018": "Chang KV, et al. Diagnostic accuracy of ultrasound for cubital tunnel syndrome: a meta-analysis. Arch Phys Med Rehabil. 2018;99(4):743-57.",
-  "ODriscoll2007": "O'Driscoll SW, Goncalves LB, Dietz P. The hook test for distal biceps tendon avulsion. Am J Sports Med. 2007;35(11):2379-82.",
-  "Appelboam2008": "Appelboam A, et al. Elbow extension test to rule out elbow fracture: multicentre, prospective validation and observational study of diagnostic accuracy in adults and children. BMJ. 2008;337:a2428.",
-  "ODriscoll2005": "O'Driscoll SW, Lawton RL, Smith AM. The 'moving valgus stress test' for medial collateral ligament tears of the elbow. Am J Sports Med. 2005;33(2):231-9.",
-  "Cook2013": "Cook C, Hegedus E. Orthopedic Physical Examination Tests: An Evidence-Based Approach. 2nd ed. Pearson; 2013.",
-  "experto": "Estimación provisoria del equipo (calidad C) basada en revisiones narrativas y consenso clínico; requiere revisión."
+ "presets": {
+  "ex1": {
+   "c_age": "si",
+   "c_fem": "si",
+   "c_rep": "si",
+   "c_trauma": "no",
+   "a_loc": "none",
+   "a_katz": "classic",
+   "a_flick": "si",
+   "a_noct": "si",
+   "a_lock": "no",
+   "a_mass": "no"
+  },
+  "ex2": {
+   "c_age": "no",
+   "c_fem": "no",
+   "c_trauma": "si",
+   "c_foosh": "si",
+   "a_loc": "radial",
+   "a_katz": "none",
+   "e_deform": "no",
+   "e_snuff": "si",
+   "e_radtend": "no"
+  },
+  "ex3": {
+   "c_age": "no",
+   "c_fem": "si",
+   "c_preg": "si",
+   "c_rep": "si",
+   "c_trauma": "no",
+   "a_loc": "radial",
+   "a_pinch": "si",
+   "a_katz": "none",
+   "e_eich": "si"
+  },
+  "ex4": {
+   "c_age": "si",
+   "c_rep": "si",
+   "c_trauma_codo": "no",
+   "a_loc_codo": "lat",
+   "a_grip": "si",
+   "e_epilat": "si",
+   "e_cozen": "si"
+  },
+  "ex5": {
+   "c_dm": "si",
+   "a_loc_codo": "none",
+   "a_ulnpar": "si",
+   "a_ulnflex": "si",
+   "e_flexpress": "si"
+  },
+  "ex6": {
+   "c_age": "si",
+   "c_fem": "no",
+   "c_trauma_codo": "no",
+   "a_loc_codo": "ant",
+   "a_pop": "si",
+   "e_hook": "si"
+  },
+  "ex7": {
+   "c_age": "si",
+   "c_fem": "si",
+   "c_rep": "si",
+   "c_trauma": "no",
+   "c_trauma_codo": "no",
+   "a_loc": "none",
+   "a_katz": "classic",
+   "a_noct": "si",
+   "a_flick": "si",
+   "a_loc_codo": "lat",
+   "a_grip": "si",
+   "e_epilat": "si"
+  },
+  "ex8": {
+   "c_age": "no",
+   "c_trauma_codo": "si",
+   "c_foosh": "si",
+   "a_loc_codo": "lat",
+   "e_noext": "si",
+   "e_rhpalp": "si"
+  },
+  "blank": {}
+ },
+ "references": {
+  "DM": {
+   "title": "D'Arcy CA, McGee S. ¿Tiene este paciente síndrome del túnel carpiano? JAMA 2000 (revisión sistemática).",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/10865306/"
+  },
+  "WA": {
+   "title": "Wainner RS et al. Regla de predicción clínica para túnel carpiano. Arch Phys Med Rehabil 2005.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/15827908/"
+  },
+  "AAEM": {
+   "title": "AAEM/AAN/AAPM&R. Parámetro de práctica: estudios electrodiagnósticos en túnel carpiano, 2002.",
+   "url": "https://www.aanem.org/clinical-practice-resources/guidelines/guideline/practice-parameter-for-edx-studies-in-cts-summary-statement-(including-literature-review)"
+  },
+  "FOW": {
+   "title": "Fowler JR et al. Sensibilidad y especificidad de la ecografía en túnel carpiano: metaanálisis. Clin Orthop 2011.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3048245"
+  },
+  "COV": {
+   "title": "Coventry L et al. Rasgos clínicos que predicen fractura oculta de escafoides: revisión sistemática. Emerg Med J 2023.",
+   "url": "https://emj.bmj.com/content/40/8/576"
+  },
+  "PRS": {
+   "title": "Revisión sistemática y metaanálisis bayesiano del examen clínico en fractura de escafoides. Plast Reconstr Surg 2021.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/33620933/"
+  },
+  "MAL": {
+   "title": "Mallee WH et al. Evaluación clínica de fracturas de escafoides: revisión sistemática y metaanálisis. J Hand Surg Am 2014.",
+   "url": "https://pesquisa.bvsalud.org/enfermeria/resource/pt/mdl-25091335"
+  },
+  "YIN": {
+   "title": "Yin ZG et al. Diagnóstico de sospecha de fractura de escafoides: metaanálisis (cintigrafía, RM, TC). Clin Orthop 2010.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2816764"
+  },
+  "COCH": {
+   "title": "Mallee WH et al. TC vs RM vs cintigrafía en sospecha de fractura de escafoides. Cochrane 2015.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/26045406/"
+  },
+  "AWR": {
+   "title": "Walenkamp MMJ et al. Amsterdam Wrist Rules: derivación y validación externa. BMC Musculoskelet Disord 2015.",
+   "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4683697/"
+  },
+  "GOU": {
+   "title": "Goubau JF et al. Test WHAT vs test de Eichhoff en De Quervain (referencia ecográfica). J Hand Surg Eur 2014.",
+   "url": "https://doi.org/10.1177/1753193412475043"
+  },
+  "TMC": {
+   "title": "Evaluación prospectiva de los tests de aducción y extensión en artrosis trapeciometacarpiana. J Hand Surg Am 2015.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/25986651"
+  },
+  "TAY": {
+   "title": "Tay SC, Tomita K, Berger RA. El signo de la fóvea cubital. J Hand Surg Am 2007.",
+   "url": "https://doi.org/10.1016/j.jhsa.2007.01.022"
+  },
+  "LAS": {
+   "title": "LaStayo P, Howell J. Tests provocativos en dolor de muñeca. J Hand Ther 1995.",
+   "url": "https://doi.org/10.1016/S0894-1130(12)80150-5"
+  },
+  "SST": {
+   "title": "Relevancia del test de desplazamiento del escafoides en lesiones escafolunares. J Clin Med 2022.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9656589"
+  },
+  "MAG": {
+   "title": "Comparación de RM 3T y artroscopía en lesiones ligamentarias y del CFCT. AJR 2009.",
+   "url": "https://doi.org/10.2214/AJR.08.1089"
+  },
+  "TFM": {
+   "title": "Lesiones del CFCT: metaanálisis de modalidades de imagen. J Wrist Surg 2018.",
+   "url": "https://thieme-connect.com/products/all/doi/10.1055/s-0038-1629911"
+  },
+  "NIS": {
+   "title": "Nishimura K et al. Metaanálisis: anti-CCP y factor reumatoide en artritis reumatoide. Ann Intern Med 2007.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/17548411/"
+  },
+  "EUL": {
+   "title": "Zhang W et al. Recomendaciones EULAR para el diagnóstico de artrosis de mano. Ann Rheum Dis 2009.",
+   "url": "https://ard.bmj.com/content/68/1/8"
+  },
+  "KEN": {
+   "title": "Kennedy CD et al. Diferenciación de tenosinovitis flexora piógena (signos de Kanavel). Hand 2017.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5669334"
+  },
+  "TFU": {
+   "title": "Spirig A et al. Medición ecográfica de la polea A1 en dedo en gatillo. Ultrasound Med Biol 2016.",
+   "url": "https://boris.unibe.ch/82652"
+  },
+  "SP": {
+   "title": "Dedo en gatillo. StatPearls (NCBI Bookshelf).",
+   "url": "https://www.ncbi.nlm.nih.gov/books/NBK459310/"
+  },
+  "GAN": {
+   "title": "Quistes ganglionares de mano y muñeca: avances en dos décadas. J Am Acad Orthop Surg 2023.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/36580047"
+  },
+  "WHL": {
+   "title": "Wheeless' Textbook of Orthopaedics: examen del CFCT (inestabilidad radiocubital distal).",
+   "url": "https://www.wheelessonline.com/muscles-tendons/tfcc-examination/"
+  },
+  "EC": {
+   "title": "Estimación clínica del prototipo. Pendiente de validación por panel de expertos.",
+   "url": ""
+  },
+  "SAR": {
+   "title": "Saroja G, et al. Diagnostic accuracy of provocative tests in lateral epicondylitis. Int J Physiother Res. 2014;2(6):815-23.",
+   "url": ""
+  },
+  "DON": {
+   "title": "Dones VC, et al. The diagnostic validity of musculoskeletal ultrasound in lateral epicondylalgia: a systematic review. BMC Med Imaging. 2014;14:10.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/24589069/"
+  },
+  "NOV": {
+   "title": "Novak CB, Lee GW, Mackinnon SE, Lay L. Provocative testing for cubital tunnel syndrome. J Hand Surg Am. 1994;19(5):817-20.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/7806805/"
+  },
+  "CHG": {
+   "title": "Chang KV, et al. Diagnostic accuracy of ultrasound for cubital tunnel syndrome: a meta-analysis. Arch Phys Med Rehabil. 2018;99(4):743-57.",
+   "url": ""
+  },
+  "AAEMU": {
+   "title": "AAEM/AAN/AAPM&R. Practice parameter: electrodiagnostic studies in ulnar neuropathy at the elbow. Muscle Nerve. 1999;22(3):408-11.",
+   "url": ""
+  },
+  "ODH": {
+   "title": "O'Driscoll SW, Goncalves LB, Dietz P. The hook test for distal biceps tendon avulsion. Am J Sports Med. 2007;35(11):2379-82.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/17630338/"
+  },
+  "APP": {
+   "title": "Appelboam A, et al. Elbow extension test to rule out elbow fracture: multicentre, prospective validation and observational study of diagnostic accuracy in adults and children. BMJ. 2008;337:a2428.",
+   "url": "https://www.bmj.com/content/337/bmj.a2428"
+  },
+  "ODM": {
+   "title": "O'Driscoll SW, Lawton RL, Smith AM. The 'moving valgus stress test' for medial collateral ligament tears of the elbow. Am J Sports Med. 2005;33(2):231-9.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/15701609/"
+  }
+ },
+ "segments": [
+  {
+   "id": "mano",
+   "name": "Mano y muñeca"
+  },
+  {
+   "id": "codo",
+   "name": "Codo y antebrazo"
+  }
+ ],
+ "presetLabels": {
+  "ex1": "Ejemplo mano: hormigueo nocturno",
+  "ex2": "Ejemplo mano: caída sobre la mano",
+  "ex3": "Ejemplo mano: dolor lado del pulgar",
+  "ex4": "Ejemplo codo: dolor lateral al agarrar",
+  "ex5": "Ejemplo codo: hormigueo en el meñique",
+  "ex6": "Ejemplo codo: chasquido al levantar peso",
+  "ex7": "Ejemplo ambos: hormigueo nocturno + dolor lateral de codo",
+  "ex8": "Ejemplo codo: caída, no estira el codo",
+  "blank": "Caso nuevo (vacío)"
  }
 }

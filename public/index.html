@@ -3,86 +3,116 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Predictor Mano-muñeca y Codo-antebrazo</title>
+<meta name="description" content="Prototipo de cuestionario bayesiano para lesiones de mano, muñeca, codo y antebrazo, con modo de revisión clínica.">
 <meta name="robots" content="noindex">
-<title>Predictor bayesiano de lesiones · Mano-muñeca y codo-antebrazo</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232347A8'/%3E%3Cpath d='M9 22V12m4 10V9m4 13V10m4 12v-8' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header class="top">
-  <div class="wrap">
-    <p class="tag">Prototipo · Mano-muñeca + Codo-antebrazo · v2</p>
-    <h1>Predictor bayesiano de lesiones de mano, muñeca, codo y antebrazo</h1>
-    <p class="lead">Cada respuesta actualiza la probabilidad de cada diagnóstico de <b>ambos segmentos</b> con razones de verosimilitud (LR) provenientes de revisiones sistemáticas, guías y estudios diagnósticos.</p>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Prototipo · Mano-muñeca + Codo-antebrazo · Base <span id="kbVersion" class="kbver"></span></div>
+      <h1>Predictor bayesiano de lesiones de mano, muñeca, codo y antebrazo</h1>
+      <p>Con un solo ingreso de datos se estiman ambos segmentos. Cada respuesta actualiza la probabilidad de cada diagnóstico con razones de verosimilitud (LR) de revisiones sistemáticas, guías y estudios diagnósticos.</p>
+    </div>
     <div class="controls">
-      <label class="switch"><input type="checkbox" id="adjQuality" checked><span></span>Ajuste por calidad de evidencia</label>
-      <label class="switch"><input type="checkbox" id="reviewMode"><span></span>Modo revisión</label>
-      <div class="load">
-        <select id="caseSelect" aria-label="Caso de ejemplo"><option value="">Caso de ejemplo…</option></select>
-        <button id="loadCase" class="btn">Cargar</button>
-        <button id="reset" class="btn ghost">Limpiar</button>
-      </div>
+      <label class="toggle" for="shrink"><input type="checkbox" id="shrink" checked> Ajuste por calidad de evidencia</label>
+      <label class="toggle" for="reviewMode"><input type="checkbox" id="reviewMode"> Modo revisión</label>
     </div>
-    <p class="warn">Prototipo en validación. No entrega diagnósticos ni reemplaza el juicio clínico. No ingrese datos identificatorios.</p>
+  </header>
+
+  <div class="notice"><strong>Prototipo en validación.</strong> No entrega diagnósticos ni reemplaza la evaluación de un profesional de salud. No ingreses nombres, RUT ni otros datos que identifiquen a un paciente.</div>
+
+  <div class="reviewbar" id="reviewbar" hidden>
+    <label for="reviewer"><b>Revisor/a</b></label>
+    <input type="text" id="reviewer" placeholder="Tu nombre y profesión">
+    <span>Comenta cada hallazgo, propone valores y guarda casos. Todo se guarda en este navegador hasta que lo exportes.</span>
+    <button class="btn sm" data-action="export-json">Exportar revisión (JSON)</button>
+    <label class="btn sm" for="importFile" style="cursor:pointer">Importar revisión</label>
+    <input type="file" id="importFile" accept="application/json" hidden>
   </div>
-  <nav class="tabs wrap">
-    <a href="#evaluar">Evaluar</a><a href="#casos">Validación de casos</a><a href="#evidencia">Evidencia y revisión</a>
+
+  <nav class="nav" aria-label="Secciones">
+    <a href="#evaluar" data-view="evaluar">Evaluar</a>
+    <a href="#casos" data-view="casos">Validación de casos</a>
+    <a href="#evidencia" data-view="evidencia">Evidencia y revisión</a>
   </nav>
-</header>
 
-<main class="wrap">
-  <section id="evaluar" class="grid">
-    <div class="col-q">
-      <div class="seg-filter" role="tablist">
-        <button data-seg="todos" class="on">Ambos segmentos</button>
-        <button data-seg="mano">Mano-muñeca</button>
-        <button data-seg="codo">Codo-antebrazo</button>
+  <!-- EVALUAR -->
+  <section class="view" id="view-evaluar">
+    <div class="controls" style="margin-bottom:12px">
+      <label for="preset" class="eyebrow">Cargar</label>
+      <select id="preset"></select>
+      <span class="eyebrow" style="margin-left:6px">Segmento</span>
+      <div class="segsel" role="group" aria-label="Segmento a evaluar">
+        <button data-segview="todos" aria-pressed="true">Ambos</button>
+        <button data-segview="mano" aria-pressed="false">Mano-muñeca</button>
+        <button data-segview="codo" aria-pressed="false">Codo-antebrazo</button>
       </div>
-      <div id="questions"></div>
     </div>
-    <aside class="col-r">
-      <h2>Probabilidad por diagnóstico</h2>
-      <p class="legend"><i class="hi"></i>alta (≥ 70 %) <i class="mid"></i>posible (30–69 %) <i class="lo"></i>baja (&lt; 30 %) <i class="pre"></i>pre-test</p>
-      <div id="results"></div>
-      <h2>Qué evaluar ahora</h2>
-      <p class="muted">Ordena preguntas y pruebas por cuánto reducirían la incertidumbre en ambos segmentos, según quién puede realizarlas.</p>
-      <div class="who" id="whoFilter"></div>
-      <ol id="next"></ol>
-    </aside>
+    <div class="layout">
+      <main>
+        <div class="tabs" role="tablist" id="tabs"></div>
+        <p class="stage-intro" id="stageIntro"></p>
+        <div class="qlist" id="qlist"></div>
+      </main>
+      <aside class="side">
+        <div class="alarm" id="alarm" hidden></div>
+        <section class="panel">
+          <div class="res-head"><h2>Probabilidad por diagnóstico</h2><span class="eyebrow" id="nAns"></span></div>
+          <div class="dxlist" id="dxlist"></div>
+          <div class="legend"><span><i style="background:var(--accent)"></i>≥ 70 % alta</span><span><i style="background:var(--amber)"></i>30–69 % posible</span><span><i style="background:var(--muted)"></i>&lt; 30 % baja</span><span><i style="background:var(--ink);opacity:.55;width:2px"></i>pre-test</span></div>
+        </section>
+        <section class="panel why" id="why"></section>
+        <section class="panel">
+          <h2 style="margin-bottom:4px">Qué evaluar ahora</h2>
+          <p class="help" style="margin-bottom:6px">Ordenado por cuánto reduciría la incertidumbre en los segmentos seleccionados, considerando quién puede hacerlo.</p>
+          <div class="sugg" id="sugg"></div>
+        </section>
+        <section class="panel" id="savePanel"></section>
+      </aside>
+    </div>
   </section>
 
-  <section id="casos">
-    <h2>Validación de casos</h2>
-    <p class="muted">Viñetas de prueba. Un caso “pasa” si cada diagnóstico esperado queda primero en su segmento y en ≥ 30 %.</p>
-    <button id="runCases" class="btn">Ejecutar validación</button>
-    <div id="caseResults"></div>
+  <!-- CASOS -->
+  <section class="view" id="view-casos" hidden>
+    <p class="stage-intro">Guarda casos con su diagnóstico confirmado (por imagen, electrodiagnóstico, cirugía o seguimiento) y mide qué tan bien acierta la base actual. Al cambiar la base de conocimiento, las métricas se recalculan sobre los mismos casos.</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="section-h"><h2>Casos guardados</h2>
+      <div class="controls"><button class="btn sm" data-action="export-csv">Descargar casos (CSV)</button><button class="btn sm" data-action="export-json">Exportar revisión (JSON)</button></div></div>
+    <div class="tbl-wrap"><table class="ev-t" id="casesTable"></table></div>
+    <div class="section-h"><h2>Desempeño por diagnóstico</h2></div>
+    <div class="tbl-wrap"><table class="ev-t" id="dxPerf"></table></div>
   </section>
 
-  <section id="evidencia">
-    <h2>Proponer un hallazgo faltante</h2>
-    <form id="propose" class="propose">
-      <input name="texto" placeholder="Hallazgo (ej.: test de Speed en codo)" required>
-      <select name="dx" id="proposeDx"></select>
-      <input name="pos" type="number" step="0.01" min="1" placeholder="LR+">
-      <input name="neg" type="number" step="0.01" min="0" max="1" placeholder="LR−">
-      <input name="ref" placeholder="Referencia (DOI / cita)">
-      <button class="btn">Generar propuesta</button>
-    </form>
-    <pre id="proposeOut" class="code" hidden></pre>
+  <!-- EVIDENCIA -->
+  <section class="view" id="view-evidencia" hidden>
+    <div class="method">
+      <div><h3>Actualización bayesiana</h3><p>Probabilidad post-test = odds pre-test × LR de cada hallazgo. Sí aplica el LR+; No aplica el LR−; No sé no cambia nada.</p></div>
+      <div><h3>Hallazgos relacionados</h3><p>Los hallazgos que miden lo mismo forman un grupo. El más fuerte cuenta 100 %, el segundo 50 %, el tercero 25 %.</p></div>
+      <div><h3>Calidad de evidencia</h3><p>A: metaanálisis o revisión sistemática. B: estudio diagnóstico individual. C: estimación clínica. Con el ajuste activo, B pesa 75 % y C 50 %.</p></div>
+      <div><h3>Dos segmentos</h3><p>Mano-muñeca y codo-antebrazo tienen su propio pre-test. Los hallazgos generales (edad, sexo, diabetes, uso repetitivo, laboratorio) actualizan ambos. La validación top-1 y top-3 se mide dentro del segmento del diagnóstico confirmado.</p></div>
+      <div><h3>Sugerencias</h3><p>Ganancia de información esperada por diagnóstico, dividida por el costo de acceso: autoevaluación, profesional, laboratorio o imagen.</p></div>
+    </div>
 
-    <h2>Base de evidencia</h2>
-    <p class="muted">Para modificar valores, edite <code>public/data/knowledge.json</code> y haga push: Vercel redespliega automáticamente.</p>
-    <div id="evidence"></div>
+    <div class="grid2" style="margin-top:18px">
+      <section class="panel"><h2 style="margin-bottom:8px">Comentarios de revisión</h2><div id="reviewSummary" class="clist"></div></section>
+      <section class="panel"><h2 style="margin-bottom:8px">Proponer un hallazgo faltante</h2><div id="missingForm"></div><div id="missingList" class="clist" style="margin-top:10px"></div></section>
+    </div>
 
-    <h2>Referencias</h2>
-    <ol id="refs" class="refs"></ol>
+    <div class="section-h"><h2>Base de evidencia</h2><span class="help">Editar en <span class="mono">public/data/knowledge.json</span></span></div>
+    <div class="tbl-wrap"><table class="ev-t" id="evTable"></table></div>
+    <h2 style="margin-top:20px">Referencias</h2>
+    <ul class="refs" id="refs"></ul>
   </section>
 
-  <footer class="foot">
-    Cada diagnóstico se calcula de forma independiente, por lo que los porcentajes no suman 100 %. Las probabilidades pre-test corresponden a personas que consultan por síntomas de mano, muñeca, codo o antebrazo y son estimaciones.
-  </footer>
-</main>
-
-<div id="mini" class="mini"></div>
-<script src="app.js"></script>
+  <footer>Cada diagnóstico se calcula de forma independiente, por eso los porcentajes no suman 100 %: una persona puede tener más de una condición a la vez. Las probabilidades pre-test corresponden a una persona que consulta por síntomas de ese segmento (mano-muñeca o codo-antebrazo) y son estimaciones.</footer>
+</div>
+<div class="toast" id="toast" hidden role="status"></div>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
